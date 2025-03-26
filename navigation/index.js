@@ -52,6 +52,45 @@ export default [
         ]
       },
       {
+        title: "Admin",
+        icon: "ic:outline-insert-drive-file",
+        child: [
+          {
+            title: "Qualification",
+            child: [
+              {
+                title: "Skills",
+                path: "/admin/qualifications/skills",
+              },
+              {
+                title: "Education",
+                path: "/admin/qualifications/educations",
+              },
+              {
+                title: "Licenses",
+                path: "/admin/qualifications/licenses",
+              },
+              {
+                title: "Languages",
+                path: "/admin/qualifications/languages",
+              },
+              {
+                title: "Memberships",
+                path: "/admin/qualifications/memberships",
+              },
+            ],
+          },
+          {
+            title: "Race & Religion",
+            path: "/admin/nationalities",
+          },
+          {
+            title: "Coparate Branding",
+            path: "/admin/coparateBranding",
+          },
+        ],
+      },
+      {
         "title": "Content",
         "icon": "mdi:pencil-ruler",
         "child": [
