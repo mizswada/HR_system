@@ -82,7 +82,7 @@ export default [
           },
           {
             title: "Race & Religion",
-            path: "/admin/nationalities",
+            path: "/admin/race&religion",
           },
           {
             title: "Coparate Branding",
