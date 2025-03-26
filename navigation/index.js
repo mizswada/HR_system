@@ -51,6 +51,82 @@ export default [
           }
         ]
       },
+
+      {
+        "title": "Admin",
+        "path": "/orangeHR/jobtitles",
+        "icon": "ph:user-circle-gear",
+        "child": [
+          {
+            "title": "Job",
+            "path": "/orangeHR/jobtitles",
+            "icon": "",
+            "child": [
+              {
+                "title": "Job Title",
+                "path": "/orangeHR/jobtitles/job-title",
+                "icon": "",
+                "child": []
+              },
+              {
+                "title": "Pay Grades",
+                "path": "/orangeHR/jobtitles/pay-grades",
+                "icon": "",
+                "child": []
+              },
+              {
+                "title": "Employment Status",
+                "path": "/orangeHR/jobtitles/employmentstat",
+                "icon": "",
+                "child": []
+              },
+              {
+                "title": "Job Categories",
+                "path": "/orangeHR/jobtitles/jobcategories",
+                "icon": "",
+                "child": []
+              },
+              {
+                "title": "Work Shifts",
+                "path": "/orangeHR/jobtitles/workshifts",
+                "icon": "",
+                "child": []
+              }
+            ]
+          },
+          {
+            "title": "Organization",
+            "path": "/orangeHR/organization",
+            "icon": "ph:user-circle-gear",
+            "child": [
+              {
+                "title": "General Information",
+                "path": "/orangeHR/organization/generalinfo",
+                "icon": "",
+                "child": []
+              },
+              {
+                "title": "Locations",
+                "path": "/orangeHR/organization/locations",
+                "icon": "",
+                "child": []
+              },
+              {
+                "title": "Structure",
+                "path": "/orangeHR/organization/structure",
+                "icon": "",
+                "child": []
+              },
+              {
+                "title": "Human Resources SOP",
+                "path": "/orangeHR/organization/hrsop",
+                "icon": "",
+                "child": []
+              }
+            ]
+          }
+        ]
+      },
       {
         "title": "Content",
         "icon": "mdi:pencil-ruler",
