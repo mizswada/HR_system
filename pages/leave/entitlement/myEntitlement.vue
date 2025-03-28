@@ -2,108 +2,75 @@
 export default {
   data() {
     return {
-
-        leaveType :[
-
-                  { label: "--Select--", value: "st" },
-                  { label: "Annual Leave", value: "al" },
-                  { label: "Compassionate Leave", value: "cl"},
-                  { label: "Medical Leave", value: "ml",  },
-                  { label: "Unpaid Leave", value: "ul",  },
+      leaveType: [
+        "Annual Leave",
+        "Compassionate Leave",
+        "Medical Leave",
+        "Unpaid Leave"
       ],
-
-      leavePeriod : [
-                  { label: "--Select--", value: "st" },
-                  { label: "01-01-2023 - 31-12-2023", value: "2023" },
-                  { label: "01-01-2024 - 31-12-2024", value: "2024" },
-                  { label: "01-01-2025 - 31-12-2025", value: "2025" },
-                  { label: "01-01-2026 - 31-12-2026", value: "2026"},
-                  
+      leavePeriod: [
+        "01-01-2023 - 31-12-2023",
+        "01-01-2024 - 31-12-2024",
+        "01-01-2025 - 31-12-2025",
+        "01-01-2026 - 31-12-2026"
       ],
+      selectedLeaveType: [],
+      selectedPeriod: [],
       data: [
         {
           "leaveType": "Annual Leave",
-          "entitlementType": "Annual Leave",
-          "validFrom": "1-1-2025",
+          "entitlementType": "",
+          "validFrom": "01-01-2025",
           "validTo": "31-12-2025",
-          "days": "3",
+          "days": "5",
           "action": "edit",
         },
       ],
-      field: [
-        { key: 'leaveType', label: 'Leave Type' },
-        { key: 'entitlementType', label: 'Entitlement Type' },
-        { key: 'validFrom', label: 'Valid From' },
-        { key: 'validTo', label: 'Valid To' },
-        { key: 'days', label: 'Days' },
-        { key: 'action', label: 'Action' },
-      ],
-      filteredData: [], // To store filtered results
-      selectedLeaveType: [],
-      selectedOptions: [],
-      selectedPeriod: [],
     };
   },
   methods: {
-    navigateToAddEntitlement() {
-      this.$router.push('/leave/entitlement/addEntitlement'); // Adjust the path as needed
-    },
     searchLeaves() {
-      // Filter data based on selectedLeaveType and selectedPeriod
-      const leaveType = this.selectedLeaveType[0]?.value || null;
-      const leavePeriod = this.selectedPeriod[0]?.value || null;
-
-      this.filteredData = this.data.filter((item) => {
-        const matchesLeaveType = leaveType ? item.leaveType === leaveType : true;
-        const matchesLeavePeriod = leavePeriod
-          ? item.validFrom.includes(leavePeriod) || item.validTo.includes(leavePeriod)
-          : true;
-        return matchesLeaveType && matchesLeavePeriod;
-      });
-
-      console.log('Filtered data:', this.filteredData);
+      // Implement search logic here
     },
-    openModal(rowData, action) {
-      // Logic to handle opening a modal for editing or viewing details
-      console.log(`Opening modal for ${action} with data:`, rowData);
+    openModal(value, action) {
+      // Implement modal logic here
     },
-    openModalDelete(rowData) {
-      // Logic to handle opening a confirmation modal for deletion
-      console.log('Opening delete confirmation modal for:', rowData);
+    openModalDelete(value) {
+      // Implement delete modal logic here
     },
   },
 };
+
 </script>
 <template>
     <rs-collapse>
-        <rs-collapse-item title="Employee Entitlement">
-    
-                <FormKit
-                    type="select"
-                    label="Leave Type"
-                    :options="leaveType"
-                    />
-                    <FormKit
-                    type="select"
-                    label="Leave Period"
-                    :options="leavePeriod"
-                    />
-                    <div class="flex justify-end space-x-4 mt-4">
-                        <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
-                    </div>
-            </rs-collapse-item>
-            </rs-collapse>
-            <div class="mb-4">
+      <rs-collapse-item title="My Employee Entitlement">
+        <FormKit
+          type="select"
+          label="Leave Type"
+          :options="leaveType"
+          v-model="selectedLeaveType"
+        />
+        <FormKit
+          type="select"
+          label="Leave Period"
+          :options="leavePeriod"
+          v-model="selectedPeriod"
+        />
+        <div class="flex justify-start space-x-4 mt-4">
+          <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+        </div>
+      </rs-collapse-item>
+    </rs-collapse>
     <div class="flex justify-start items-center mb-4">
-      <rs-button @click="navigateToAddEntitlement">
+      <rs-button @click="openModal(null, 'add')">
         <Icon name="material-symbols:add" class="mr-1"></Icon>
           Add
       </rs-button>
     </div>
-  </div>
-  <rs-table
+    <rs-table
   :field="field"
-                        :data="filteredData.length ? filteredData : data"
+                        :data="data"
                         :options="{
                           variant: 'default',
                           striped: true,
