@@ -91,6 +91,70 @@ export default [
         ],
       },
       {
+        title: "Leave",
+        icon: "ic:outline-shopping-bag",
+        child: [
+          {
+            title: "Apply",
+            path: "/apps/ecommerce/products",
+          },
+          {
+            title: "My Leave",
+            path: "/leave/myLeave",
+          },
+          {
+            title: "Entitlements",
+            child: [
+              {
+                title: "Add Entitlement",
+                path: "/leave/entitlement/addEntitlement",
+              },
+              {
+                title: "Employee Entitlement",
+                path: "/leave/entitlement/employeeEntitlement",
+              },
+              {
+                title: "My Entitlement",
+                path: "/leave/entitlement/myEntitlement",
+              },
+            ],
+          },
+          {
+            title: "Report",
+            path: "/leave/report",
+          },
+          {
+            title: "Configuration",
+            child: [
+              {
+                title: "Leave period",
+                path: "/leave/configuration/leavePeriod",
+              },
+              {
+                title: "Leave type",
+                path: "/leave/configuration/leaveType",
+              },
+              {
+                title: "Work week",
+                path: "/leave/configuration/workWeek",
+              },
+              {
+                title: "Holidays",
+                path: "/leave/configuration/holidays",
+              },
+            ],
+          },
+          {
+            title: "Leave list",
+            path: "/leave/leaveList",
+          },
+          {
+            title: "Assign leave",
+            path: "/leave/assignLeave",
+          },
+        ],
+      },
+      {
         "title": "Content",
         "icon": "mdi:pencil-ruler",
         "child": [
