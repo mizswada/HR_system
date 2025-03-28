@@ -31,7 +31,10 @@ export default {
                   { label: "Product", value: "pr",  },
                   
                 ],
-      jobTitle: ['Manager', 'Developer', 'Analyst'], // Example options
+      jobTitle: [{ label: "--Select--", value: "st" },
+                  { label: "Developer", value: "dv" },
+                  { label: "Jr Developer", value: "jrd",  },
+                  { label: "UI/UX Developer", value: "ui",  },], // Example options
       selectedLeaveType: '',
       selectedPeriod: '',
       selectedLocation: '',
