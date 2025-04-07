@@ -101,7 +101,7 @@ const TreeNode = defineComponent({
   <div class="p-4 bg-gray-50 rounded-lg shadow">
     <div class="flex justify-between items-center mb-4">
       <h1 class="text-2xl font-bold" style="font-family: Arial;">Organization Structure</h1>
-      <button @click="openModal(organizationTree[0])" class="bg-purple-500 text-white px-4 py-2 rounded-lg">+ Add</button>
+      <button @click="openModal(organizationTree[0])" class="bg-green-500 text-white px-4 py-2 rounded-lg">+ Add</button>
     </div>
     <ul>
       <li v-for="(node, index) in organizationTree" :key="index">

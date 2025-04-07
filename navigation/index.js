@@ -89,7 +89,7 @@ export default [
   {
     "header": "Naim Works",
     "description": "",
-    child: [
+    "child": [
       {
         title: "Qualification",
         icon:"healthicons:i-exam-qualification-outline",
@@ -261,7 +261,65 @@ export default [
                 "path": "/orangeHR/organization/hrsop",
                 "icon": "",
                 "child": []
-              }
+              },
+
+              {
+                "title": "PIM",
+                "path": "/orangeHR/PIM",
+                "icon": "ph:user-circle-gear",
+                "child": [
+                  {
+                    "title": "Configuration",
+                    "path": "/orangeHR/PIM/configuration",
+                    "icon": "",
+                    "child": [
+                      {
+                        "title": "Optional Fields",
+                        "path": "/orangeHR/PIM/configuration/optionalfield",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Data Import",
+                        "path": "/orangeHR/PIM/configuration/dataimport",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Reporting Methods",
+                        "path": "/orangeHR/PIM/configuration/reportingmethods",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Termination Reasons",
+                        "path": "/orangeHR/PIM/configuration/terminationreasons",
+                        "icon": "",
+                        "child": []
+                      },
+                    ]
+                  },
+                  {
+                    "title": "Employee List",
+                    "path": "/orangeHR/PIM/employeelist",
+                    "icon": "ph:user-circle-gear",
+                    "child": []
+                  },
+                  {
+                    "title": "Add Employee",
+                    "path": "/orangeHR/PIM/addemployee",
+                    "icon": "ph:user-circle-gear",
+                    "child": []
+                  },
+                  {
+                    "title": "Employee Report",
+                    "path": "/orangeHR/PIM/report",
+                    "icon": "ph:user-circle-gear",
+                    "child": []
+                  }
+                ]
+              },
+        
             ]
           }
         ]
