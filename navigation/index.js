@@ -155,6 +155,41 @@ export default [
         ],
       },
       {
+        title: "Claim",
+        icon: "ic:outline-shopping-bag",
+        child: [
+          {
+            title: "Configuration",
+            child: [
+              {
+                title: "Events",
+                path: "/claim/configuration/events",
+              },
+              {
+                title: "Expense Types",
+                path: "/claim/configuration/expenseTypes",
+              },
+            ],
+          },
+          {
+            title: "Submit Claim",
+            path: "/claim/submitClaim",
+          },
+          {
+            title: "My Claims",
+            path: "/claim/myClaims",
+          },
+          {
+            title: "Employee Claims",
+            path: "/claim/employeeClaims",
+          },
+          {
+            title: "Assign Claim",
+            path: "/claim/assignClaim",
+          },
+        ],
+      },
+      {
         "title": "Content",
         "icon": "mdi:pencil-ruler",
         "child": [
