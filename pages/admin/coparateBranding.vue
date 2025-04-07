@@ -39,8 +39,8 @@ const primaryGradientColor2 = ref('#000000');
 
 <template>
   <div class="mb-4">
-    <h1 class="text-2xl font-bold">Coparate Branding</h1>
-    <div class="border p-4 rounded-lg">
+    <h1 class="text-2xl font-bold">Corporate Branding</h1>
+    <div class="card p-4 mt-4">
       <div class="grid grid-cols-3 gap-4 mt-4">
         <label class="flex items-center space-x-2">
           <span>Primary Color:</span>

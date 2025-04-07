@@ -63,47 +63,49 @@ function deleteRace() {
 
 <template>
   <div class="mb-4">
-<h1 class="text-2xl font-bold">Race & Religion</h1>
-    <div class="flex justify-end items-center mb-4">
-      <rs-button @click="openModal(null, 'add')">
-        <Icon name="material-symbols:add" class="mr-1"></Icon>
+    <h1 class="text-2xl font-bold">Race & Religion</h1>
+    <div class="card p-4 mt-4">
+      <div class="flex justify-end items-center mb-4">
+        <rs-button @click="openModal(null, 'add')">
+          <Icon name="material-symbols:add" class="mr-1"></Icon>
           Add
-      </rs-button>
+        </rs-button>
+      </div>
+      <rs-table
+        :data="data"
+        :options="{
+          variant: 'default',
+          striped: true,
+          borderless: true,
+        }"
+        :options-advanced="{
+          sortable: true,
+          responsive: true,
+          filterable: false,
+        }"
+        advanced
+      >
+        <template v-slot:action="data">
+          <div
+            class="flex justify-center items-center"
+          >
+            <Icon
+              name="material-symbols:edit-outline-rounded"
+              class="text-primary hover:text-primary/90 cursor-pointer mr-1"
+              size="22"
+              @click="openModal(data.value, 'edit')"
+            ></Icon>
+            <Icon
+              name="material-symbols:close-rounded"
+              class="text-primary hover:text-primary/90 cursor-pointer"
+              size="22"
+              @click="openModalDelete(data.value)"
+            ></Icon>
+          </div>
+        </template>
+      </rs-table>
     </div>
   </div>
-  <rs-table
-    :data="data"
-    :options="{
-      variant: 'default',
-      striped: true,
-      borderless: true,
-    }"
-    :options-advanced="{
-      sortable: true,
-      responsive: true,
-      filterable: false,
-    }"
-    advanced
-  >
-    <template v-slot:action="data">
-      <div
-        class="flex justify-center items-center"
-      >
-        <Icon
-          name="material-symbols:edit-outline-rounded"
-          class="text-primary hover:text-primary/90 cursor-pointer mr-1"
-          size="22"
-          @click="openModal(data.value, 'edit')"
-        ></Icon>
-        <Icon
-          name="material-symbols:close-rounded"
-          class="text-primary hover:text-primary/90 cursor-pointer"
-          size="22"
-          @click="openModalDelete(data.value)"
-        ></Icon>
-      </div>
-    </template>
-  </rs-table>
   <rs-modal
     :title="modalType == 'edit' ? 'Edit Race & Religion' : 'Add Race & Religion'"
     ok-title="Save"
