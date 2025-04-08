@@ -47,27 +47,29 @@ export default {
 <template>
     <div class="outline-container border p-4 mb-4">
         <h5 class="font-bold">Add Leave Entitlement</h5>
-        <FormKit
-          type="radio"
-          label="Add to"
-          :options="options"
-          input-class="flex space-x-4"
-        />
-        <FormKit type="text" label="Employee Name"/>
-        <FormKit
-          type="select"
-          label="Leave Type"
-          :options="leaveType"
-        />
-        <FormKit
-          type="select"
-          label="Leave Period"
-          :options="leavePeriod"
-        />
-        <FormKit type="text" label="Entitlement"/>
-        <div class="flex justify-end space-x-4 mt-4">
-          <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Cancel</button>
-          <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
+        <div class="bg-white p-6 rounded shadow">
+            <FormKit
+              type="radio"
+              label="Add to"
+              :options="options"
+              input-class="flex space-x-4"
+            />
+            <FormKit type="text" label="Employee Name"/>
+            <FormKit
+              type="select"
+              label="Leave Type"
+              :options="leaveType"
+            />
+            <FormKit
+              type="select"
+              label="Leave Period"
+              :options="leavePeriod"
+            />
+            <FormKit type="text" label="Entitlement"/>
+            <div class="flex justify-end space-x-4 mt-4">
+              <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Cancel</button>
+              <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
+            </div>
         </div>
     </div>
 </template>

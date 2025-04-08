@@ -37,17 +37,19 @@ export default {
 <template>
     <div class="outline-container border p-4 mb-4">
         <h5 class="font-bold">Assign Leave</h5>
-        <FormKit type="text" label="Employee Name"/>
-        <FormKit
-            type="select"
-            label="Leave Type"
-            :options="leaveType"
-         />
-        <FormKit type="date" v-model="fromDate" label="From Date" />
-        <FormKit type="date" v-model="toDate" label="To Date" />
-        <FormKit type="textarea" placeholder="" rows="3" label="Comments"/>
-        <div class="flex justify-end space-x-4 mt-4">
-    <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Assign</button>
-  </div>
+        <div class="bg-white p-6 rounded shadow">
+            <FormKit type="text" label="Employee Name"/>
+            <FormKit
+                type="select"
+                label="Leave Type"
+                :options="leaveType"
+            />
+            <FormKit type="date" v-model="fromDate" label="From Date" />
+            <FormKit type="date" v-model="toDate" label="To Date" />
+            <FormKit type="textarea" placeholder="" rows="3" label="Comments"/>
+            <div class="flex justify-end space-x-4 mt-4">
+                <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Assign</button>
+            </div>
+        </div>
     </div>
 </template>

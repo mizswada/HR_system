@@ -62,30 +62,38 @@ export default {
 };
   </script>
 <template>
-    <rs-collapse>
-        <rs-collapse-item title="Leave List">
-  <FormKit type="date" v-model="fromDate" label="From Date" />
-  <FormKit type="date" v-model="toDate" label="To Date" />
-  <h6>Show Status with Leave</h6>
-  <v-select name="statusLeave" :options="statusLeave" multiple v-model="selectedStatus"></v-select>
-  <FormKit
-    type="select"
-    label="Leave Type"
-    :options="leaveType"
-  />
-  <FormKit type="text" label="Employee Name"/>
-  <FormKit
-    type="select"
-    label="Sub Unit"
-    :options="subUnit"
-  />
-  <div class="flex justify-end space-x-4 mt-4">
-    <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
-    <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
-  </div>
-</rs-collapse-item>
-</rs-collapse>
-
+  <rs-collapse>
+    <rs-collapse-item title="Leave List">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-6">
+        <FormKit type="date" v-model="fromDate" label="From Date" />
+        <FormKit type="date" v-model="toDate" label="To Date" />
+        <FormKit
+          type="select"
+          label="Status Leave"
+          :options="statusLeave"
+        />
+        <FormKit
+          type="select"
+          label="Leave Type"
+          :options="leaveType"
+        />
+        <!-- Removed extra items to fit 1 row with 4 items -->
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-6 mt-4">
+        <FormKit type="text" label="Employee Name" />
+        <FormKit
+          type="select"
+          label="Sub Unit"
+          :options="subUnit"
+        />
+        <!-- Add additional filters here if needed -->
+      </div>
+      <div class="space-x-4 mt-8">
+        <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
+        <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+      </div>
+    </rs-collapse-item>
+  </rs-collapse>
 
   <rs-table
   :field="field"

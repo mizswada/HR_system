@@ -69,23 +69,25 @@ export default {
 };
 </script>
 <template>
+  <div class="bg-white p-4 rounded shadow mb-4">
     <div class="outline-container border p-4 mb-4">
-        <h6>Leave Period</h6>
-        <FormKit
-            type="select"
-            label="Start Month"
-            validation="required"
-            :options="startMonth"
-         />
-         <FormKit
-            type="select"
-            label="Start Date"
-            validation="required"
-            :options="startDate"
-         />
-         <div class="flex justify-end space-x-4 mt-4">
-    <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
-    <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
-  </div>
+      <h6>Leave Period</h6>
+      <FormKit
+        type="select"
+        label="Start Month"
+        validation="required"
+        :options="startMonth"
+      />
+      <FormKit
+        type="select"
+        label="Start Date"
+        validation="required"
+        :options="startDate"
+      />
+      <div class="flex justify-end space-x-4 mt-4">
+        <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
+        <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
+      </div>
     </div>
+  </div>
 </template>

@@ -58,7 +58,7 @@ export default [
         child: [
           {
             title: "Apply",
-            path: "/apps/ecommerce/products",
+            path: "/leave/apply",
           },
           {
             title: "My Leave",

@@ -35,25 +35,27 @@ export default {
 <template>
     <rs-collapse>
         <rs-collapse-item title="Employee Entitlement">
-    
-        <h5 class="font-bold">Leave Entitlement</h5>
-        <FormKit type="text" label="Employee Name"/>
-        <FormKit
-                    type="select"
-                    label="Leave Type"
-                    :options="leaveType"
-                    v-model="selectedLeaveType"
-                    />
-                    <FormKit
-                    type="select"
-                    label="Leave Period"
-                    :options="leavePeriod"
-                    v-model="selectedPeriod"
-                    />
-                    <div class="flex justify-end space-x-4 mt-4">
-    <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
-  </div>
-</rs-collapse-item>
-</rs-collapse>
-
+          <h5 class="font-bold">Leave Entitlement</h5>
+          <div class="bg-white p-6 rounded shadow">
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-x-6">
+              <FormKit type="text" label="Employee Name"/>
+              <FormKit
+                  type="select"
+                  label="Leave Type"
+                  :options="leaveType"
+                  v-model="selectedLeaveType"
+              />
+              <FormKit
+                  type="select"
+                  label="Leave Period"
+                  :options="leavePeriod"
+                  v-model="selectedPeriod"
+              />
+              <div class="space-x-4 mt-8">
+                <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+              </div>
+            </div>
+          </div>
+        </rs-collapse-item>
+    </rs-collapse>
 </template>

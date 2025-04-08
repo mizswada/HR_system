@@ -97,49 +97,49 @@ function deleteLeaveType() {
 </script>
 
 <template>
-  <div class="mb-4">
-    <h1 class="text-2xl font-bold">Leave Types</h1>
-    <div class="flex justify-end items-center mb-4">
-      <rs-button @click="openModal(null, 'add')">
-        <Icon name="material-symbols:add" class="mr-1"></Icon>
+  <div class="bg-white p-4 rounded shadow mb-4">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold">Leave Types</h1>
+      <div class="flex justify-end items-center mb-4">
+        <rs-button @click="openModal(null, 'add')">
+          <Icon name="material-symbols:add" class="mr-1"></Icon>
           Add
-      </rs-button>
-    </div>
-  </div>
-  <rs-table
-    :data="data"
-    :columns="columns"
-    :options="{
-      variant: 'default',
-      striped: true,
-      borderless: true,
-    }"
-    :options-advanced="{
-      sortable: true,
-      responsive: true,
-      filterable: false,
-    }"
-    advanced
-  >
-    <template v-slot:action="data">
-      <div
-        class="flex justify-center items-center"
-      >
-        <Icon
-          name="material-symbols:edit-outline-rounded"
-          class="text-primary hover:text-primary/90 cursor-pointer mr-1"
-          size="22"
-          @click="openModal(data.value, 'edit')"
-        ></Icon>
-        <Icon
-          name="material-symbols:close-rounded"
-          class="text-primary hover:text-primary/90 cursor-pointer"
-          size="22"
-          @click="openModalDelete(data.value)"
-        ></Icon>
+        </rs-button>
       </div>
-    </template>
-  </rs-table>
+    </div>
+    <rs-table
+      :data="data"
+      :columns="columns"
+      :options="{
+        variant: 'default',
+        striped: true,
+        borderless: true,
+      }"
+      :options-advanced="{
+        sortable: true,
+        responsive: true,
+        filterable: false,
+      }"
+      advanced
+    >
+      <template v-slot:action="data">
+        <div class="flex justify-center items-center">
+          <Icon
+            name="material-symbols:edit-outline-rounded"
+            class="text-primary hover:text-primary/90 cursor-pointer mr-1"
+            size="22"
+            @click="openModal(data.value, 'edit')"
+          ></Icon>
+          <Icon
+            name="material-symbols:close-rounded"
+            class="text-primary hover:text-primary/90 cursor-pointer"
+            size="22"
+            @click="openModalDelete(data.value)"
+          ></Icon>
+        </div>
+      </template>
+    </rs-table>
+  </div>
   <rs-modal
     :title="modalType == 'edit' ? 'Edit Leave Type' : 'Add Leave Type'"
     ok-title="Save"
@@ -162,7 +162,6 @@ function deleteLeaveType() {
       :options="options"
     />
   </rs-modal>
-  <!-- Modal Delete Confirmation -->
   <rs-modal
     title="Delete Confirmation"
     ok-title="Yes"
