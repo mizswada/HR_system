@@ -22,30 +22,35 @@ export default {
 };
 </script>
 <template>
+  <div class="card bg-white p-4 mb-4">
     <rs-collapse>
-        <rs-collapse-item title="My Claims">
-            <FormKit type="text" label="Reference Id" placeholder="Type for hints..."/>
-            <FormKit
-                type="select"
-                label="Event Name"
-                :options="event"
-                v-model="event" 
-            />
-            <FormKit
-                type="select"
-                label="Status"
-                :options="status"
-                v-model="status" 
-            />
-            <FormKit type="date" v-model="fromDate" label="From Date" />
-            <FormKit type="date" v-model="toDate" label="To Date" />
-            <div class="flex justify-end space-x-4 mt-4">
-                <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
-                <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
-            </div>
-        </rs-collapse-item>
+      <rs-collapse-item title="My Claims">
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-x-6">
+          <FormKit type="text" label="Reference Id" placeholder="Type for hints..."/>
+          <FormKit
+              type="select"
+              label="Event Name"
+              :options="event"
+              v-model="event" 
+          />
+          <FormKit
+              type="select"
+              label="Status"
+              :options="status"
+              v-model="status" 
+          />
+          <FormKit type="date" v-model="fromDate" label="From Date" />
+          <FormKit type="date" v-model="toDate" label="To Date" />
+          <div class="col-span-full flex justify-end space-x-4 mt-8">
+            <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
+            <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+          </div>
+        </div>
+      </rs-collapse-item>
     </rs-collapse>
+  </div>
 
+  <div class="card bg-white p-4 mb-4">
     <div class="flex justify-start items-center mb-4">
       <rs-button @click="openModal(null, 'add')">
         <Icon name="material-symbols:add" class="mr-1"></Icon>
@@ -53,16 +58,16 @@ export default {
       </rs-button>
     </div>
     <rs-table
-        :field="field"
-        :data="data"
-        :options="{
-          variant: 'default',
-          striped: true,
-          borderless: true,
-          hover: true,
-          fixed: false,
-        }"
-        basic
+      :field="field"
+      :data="data"
+      :options="{
+        variant: 'default',
+        striped: true,
+        borderless: true,
+        hover: true,
+        fixed: false,
+      }"
+      basic
     >
       <template v-slot:action="data">
         <div class="flex justify-center items-center">
@@ -75,4 +80,5 @@ export default {
         </div>
       </template>
     </rs-table>
+  </div>
 </template>

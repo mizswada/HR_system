@@ -23,7 +23,7 @@ export default {
 };
 </script>
 <template>
-  <div class="card p-4 mb-4">
+  <div class="card bg-white p-4 mb-4">
     <h3>Submit Claim</h3>
     <FormKit
       type="select"

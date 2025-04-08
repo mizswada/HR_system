@@ -65,22 +65,27 @@ export default {
 };
 </script>
 <template>
+  <div class="card bg-white p-4 mb-4">
     <rs-collapse>
-        <rs-collapse-item title="Events">
-            <FormKit type="text" label="Event Name" placeholder="Type for hints..."/>
-            <FormKit
-                type="select"
-                label="Status"
-                :options="status"
-                v-model="status" 
-            />
-            <div class="flex justify-end space-x-4 mt-4">
-                <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
-                <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
-            </div>
-        </rs-collapse-item>
+      <rs-collapse-item title="Events">
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-x-6">
+          <FormKit type="text" label="Event Name" placeholder="Type for hints..."/>
+          <FormKit
+              type="select"
+              label="Status"
+              :options="status"
+              v-model="status" 
+          />
+          <div class="col-span-full flex justify-end space-x-4 mt-8">
+            <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
+            <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+          </div>
+        </div>
+      </rs-collapse-item>
     </rs-collapse>
+  </div>
 
+  <div class="card bg-white p-4 mb-4">
     <div class="flex justify-start items-center mb-4">
       <rs-button @click="openModal(null, 'add')">
         <Icon name="material-symbols:add" class="mr-1"></Icon>
@@ -89,34 +94,35 @@ export default {
     </div>
 
     <rs-table
-  :field="field"
-                        :data="data"
-                        :options="{
-                          variant: 'default',
-                          striped: true,
-                          borderless: true,
-                          hover: true,
-                          fixed: false,
-                        }"
-                        basic
-  >
-    <template v-slot:action="data">
-      <div class="flex justify-center items-center">
-        <Icon
-          name="material-symbols:edit-outline-rounded"
-          class="text-primary hover:text-primary/90 cursor-pointer mr-1"
-          size="22"
-          @click="openModal(data.value, 'edit')"
-        ></Icon>
-        <Icon
-          name="material-symbols:close-rounded"
-          class="text-primary hover:text-primary/90 cursor-pointer"
-          size="22"
-          @click="openModalDelete(data.value)"
-        ></Icon>
-      </div>
-    </template>
-  </rs-table>
+      :field="field"
+      :data="data"
+      :options="{
+        variant: 'default',
+        striped: true,
+        borderless: true,
+        hover: true,
+        fixed: false,
+      }"
+      basic
+    >
+      <template v-slot:action="data">
+        <div class="flex justify-center items-center">
+          <Icon
+            name="material-symbols:edit-outline-rounded"
+            class="text-primary hover:text-primary/90 cursor-pointer mr-1"
+            size="22"
+            @click="openModal(data.value, 'edit')"
+          ></Icon>
+          <Icon
+            name="material-symbols:close-rounded"
+            class="text-primary hover:text-primary/90 cursor-pointer"
+            size="22"
+            @click="openModalDelete(data.value)"
+          ></Icon>
+        </div>
+      </template>
+    </rs-table>
+  </div>
 
   <rs-modal
     :title="modalType == 'edit' ? 'Edit Event' : 'Add Event'"

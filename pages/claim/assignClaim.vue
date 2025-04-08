@@ -23,26 +23,26 @@ export default {
 };
 </script>
 <template>
-    <div class="card p-4 mb-4">
-        <h3>Create Claim Request</h3>
-        <FormKit type="text" label="Employee Name" validation= "required" placeholder="Type for hints..."/>
-        <FormKit
-            type="select"
-            label="Event"
-            validation="required"
-            :options="event"
-        />
-        <FormKit
-            type="select"
-            label="Currency"
-            validation="required"
-            :options="currency"
-        />
-        <FormKit type="textarea" rows="3" label="Remarks" />
+  <div class="card bg-white p-4 mb-4">
+    <h3>Create Claim Request</h3>
+    <FormKit type="text" label="Employee Name" validation="required" placeholder="Type for hints..."/>
+    <FormKit
+        type="select"
+        label="Event"
+        validation="required"
+        :options="event"
+    />
+    <FormKit
+        type="select"
+        label="Currency"
+        validation="required"
+        :options="currency"
+    />
+    <FormKit type="textarea" rows="3" label="Remarks" />
 
-            <div class="flex justify-end space-x-4 mt-4">
-                <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Cancel</button>
-                <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Create</button>
-            </div>
+    <div class="flex justify-end space-x-4 mt-4">
+      <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Cancel</button>
+      <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Create</button>
     </div>
+  </div>
 </template>
