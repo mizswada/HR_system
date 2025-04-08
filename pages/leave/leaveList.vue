@@ -88,10 +88,10 @@ export default {
         />
         <!-- Add additional filters here if needed -->
       </div>
-      <div class="space-x-4 mt-8">
-        <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
-        <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
-      </div>
+      <div class="col-span-full flex justify-end space-x-4 mt-8">
+            <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
+            <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+          </div>
     </rs-collapse-item>
   </rs-collapse>
 
