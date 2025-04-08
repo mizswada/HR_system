@@ -5,6 +5,7 @@ export default {
       fromDate: '',
       toDate: '',
       statusLeave: [
+        "All",
         "Rejected",
         "Taken",
         "Pending Approval",
@@ -12,6 +13,7 @@ export default {
         "Scheduled"
       ],
       leaveType: [
+        "All",
         "Annual Leave",
         "Compassionate Leave",
         "Medical Leave",
@@ -54,22 +56,30 @@ export default {
 </script>
 <template>
   <rs-collapse>
-    <rs-collapse-item title="My Leave List">
-    <FormKit type="date" v-model="fromDate" label="From Date" />
-    <FormKit type="date" v-model="toDate" label="To Date" />
-    <p>Show Status with Leave</p>
-    <v-select name="statusLeave" :options="statusLeave" multiple v-model="selectedStatus"></v-select>
-    <FormKit
+    <rs-collapse-item title="My Leave List" :open="true">
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-x-6">
+        <FormKit type="date" v-model="fromDate" label="From Date" class="flex-1" />
+        <FormKit type="date" v-model="toDate" label="To Date" class="flex-1" />
+        <FormKit
+            type="select"
+            label="Status"
+            name="statusLeave" 
+            :options="statusLeave"
+            v-model="selectedStatus"
+          />
+          <FormKit
             type="select"
             label="Leave Type"
             :options="leaveType"
-         />
-    <div class="flex justify-end space-x-4 mt-4">
-      <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
-      <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
-    </div>
-</rs-collapse-item>
-</rs-collapse>
+          />
+          <div class="space-x-4 mt-8">
+            <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
+            <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+          </div>
+      </div>
+     
+    </rs-collapse-item>
+  </rs-collapse>
 
   <rs-table
   :field="field"
