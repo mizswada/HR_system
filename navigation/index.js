@@ -89,7 +89,7 @@ export default [
   {
     "header": "Naim Works",
     "description": "",
-    child: [
+    "child": [
       {
         title: "Qualification",
         icon:"healthicons:i-exam-qualification-outline",
@@ -322,34 +322,127 @@ export default [
                 "path": "/orangeHR/organization/hrsop",
                 "icon": "",
                 "child": []
-              }
+              },
+
+              {
+                "title": "PIM",
+                "path": "/orangeHR/PIM",
+                "icon": "ph:user-circle-gear",
+                "child": [
+                  {
+                    "title": "Configuration",
+                    "path": "/orangeHR/PIM/configuration",
+                    "icon": "",
+                    "child": [
+                      {
+                        "title": "Optional Fields",
+                        "path": "/orangeHR/PIM/configuration/optionalfield",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Data Import",
+                        "path": "/orangeHR/PIM/configuration/dataimport",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Reporting Methods",
+                        "path": "/orangeHR/PIM/configuration/reportingmethods",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Termination Reasons",
+                        "path": "/orangeHR/PIM/configuration/terminationreasons",
+                        "icon": "",
+                        "child": []
+                      },
+                    ]
+                  },
+                  {
+                    "title": "Employee List",
+                    "path": "/orangeHR/PIM/employeelist",
+                    "icon": "ph:user-circle-gear",
+                    "child": []
+                  },
+                  {
+                    "title": "Add Employee",
+                    "path": "/orangeHR/PIM/addemployee",
+                    "icon": "ph:user-circle-gear",
+                    "child": []
+                  },
+                  {
+                    "title": "Employee Report",
+                    "path": "/orangeHR/PIM/report",
+                    "icon": "ph:user-circle-gear",
+                    "child": []
+                  }
+                ]
+              },
+        
             ]
           }
         ]
+      },
+      {
+        "title": "Content",
+        "icon": "mdi:pencil-ruler",
+        "child": [
+          {
+            "title": "Editor",
+            "path": "/devtool/content-editor"
+          },
+          {
+            "title": "Template",
+            "path": "/devtool/content-editor/template"
+          }
+        ]
+      },
+      {
+        "title": "API Editor",
+        "path": "/devtool/api-editor",
+        "icon": "material-symbols:api-rounded",
+        "child": []
+      },
+      {
+        "title": "Code Playground",
+        "path": "/devtool/code-playground",
+        "icon": "mdi:code-braces",
+        "child": []
+      }
+    ],
+    "meta": {
+      "auth": {
+        "role": [
+          "Developer"
+        ]
+      }
+    }
   },
-  // {
-  //   "header": "Help",
-  //   "description": "Help and documentation",
-  //   "child": [
-  //     {
-  //       "title": "Documentation",
-  //       "icon": "solar:book-bookmark-minimalistic-bold",
-  //       "path": "https://manual.corrad.ai",
-  //       "external": true
-  //     },
-  //     {
-  //       "title": "UI Components",
-  //       "icon": "material-symbols:settings-input-component-outline-rounded",
-  //       "path": "https://ui.corrad.ai",
-  //       "external": true
-  //     }
-  //   ],
-  //   "meta": {
-  //     "auth": {
-  //       "role": [
-  //         "Developer"
-  //       ]
-  //     }
-  //   }
-  // }
+  {
+    "header": "Help",
+    "description": "Help and documentation",
+    "child": [
+      {
+        "title": "Documentation",
+        "icon": "solar:book-bookmark-minimalistic-bold",
+        "path": "https://manual.corrad.ai",
+        "external": true
+      },
+      {
+        "title": "UI Components",
+        "icon": "material-symbols:settings-input-component-outline-rounded",
+        "path": "https://ui.corrad.ai",
+        "external": true
+      }
+    ],
+    "meta": {
+      "auth": {
+        "role": [
+          "Developer"
+        ]
+      }
+    }
+  }
 ];

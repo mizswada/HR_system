@@ -1,177 +1,136 @@
-
 <script setup>
- const data = [
- {
-                      "Item":"Iphone 13",
-                      "ShippingDate": "7 November 2024",
-                      "Price": "RM 3999",
-                      "status":"Waiting for Courier"
-                   },
-                   {
-                    "Item":"Foldable Study Table",
-                      "ShippingDate": "7 January 2025",
-                      "Price": "RM 45.25",
-                      "status":"Shipped"
-                   },
-                   {
-                    "Item":"Asus ROG ZePhyrus G14 ",
-                      "ShippingDate": "7 November 2024",
-                      "Price": "RM 5299",
-                      "status":"Waiting for Payment"
-                   }
-                  ]
+import { ref, defineComponent } from "vue";
 
-                  const showModal = ref(false);
-                  const showModalHideOverlay = ref(false); 
-                  import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+// Tree structure data
+const organizationTree = ref([
+  {
+    name: "Toyyibpay Sdn Bhd",
+    expanded: true,
+    children: [
+      {
+        name: "002: Unit Developer RnD",
+        expanded: false,
+        children: [],
+      },
+      {
+        name: "C003: Corrad Software",
+        expanded: true,
+        children: [
+          {
+            name: "C0031: Product",
+            expanded: false,
+            children: [],
+          },
+        ],
+      },
+      {
+        name: "sfsdf: fdsfsd",
+        expanded: false,
+        children: [],
+      },
+    ],
+  },
+]);
 
-const modules = [Navigation, Pagination, Scrollbar, A11y];
+// Modal visibility state
+const showModal = ref(false);
+const selectedNode = ref(null);
 
-const images = [
-'https://assets.bharian.com.my/images/articles/%5BBM%5D%20Have%20fun%20on%20Shopee%20this%2011.11%20Big%20Sale%20with%20Dolla.jpeg',
-'https://ecentral.my/wp-content/uploads/2025/01/shopee-voucher-1.jpg',
-'https://assets.bharian.com.my/images/articles/%5BBM%5D%20Win%20up%20to%20RM1%20Million%20with%20Shopee%20Live.JPG'
-];
+// Function to toggle node expansion
+const toggleNode = (node) => {
+  node.expanded = !node.expanded;
+};
+
+// Function to open the modal
+const openModal = (node) => {
+  selectedNode.value = node;
+  showModal.value = true;
+};
+
+// Function to save the new unit
+const saveUnit = (unitId, name, description) => {
+  if (selectedNode.value) {
+    selectedNode.value.children.push({
+      name: `${unitId}: ${name}`,
+      expanded: false,
+      children: [],
+    });
+  }
+  showModal.value = false;
+};
+
+// Define the TreeNode component
+const TreeNode = defineComponent({
+  name: "TreeNode",
+  props: {
+    node: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup(props) {
+    const toggleNode = (node) => {
+      node.expanded = !node.expanded;
+    };
+
+    return { toggleNode, openModal };
+  },
+  template: `
+    <div>
+      <div
+        @click="toggleNode(node)"
+        class="cursor-pointer flex items-center gap-2 py-1"
+      >
+        <span v-if="node.children && node.children.length" class="text-purple-500">
+          {{ node.expanded ? '▼' : '▶' }}
+        </span>
+        <span>{{ node.name }}</span>
+        <button @click.stop="openModal(node)" class="ml-auto text-purple-500">+</button>
+      </div>
+      <ul v-if="node.expanded" class="pl-6 border-l-2 border-purple-200">
+        <li v-for="(child, index) in node.children" :key="index">
+          <TreeNode :node="child" />
+        </li>
+      </ul>
+    </div>
+  `,
+});
 </script>
 
-
 <template>
-
-  <h1 class="text-5xl font-bold">Shopee Lite <Icon class="text-warning" name="fluent-emoji-high-contrast:basket"></Icon></h1>   
-  
-  <rs-alert variant="warning">STACK MORE VOUCHERS, PAY LESS FOR YOUR ORDERS !</rs-alert>
-
-<div class="p-4">
-    <LayoutsBreadcrumb />
-    <!-- First Row -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-x-6">
-      <!-- Summary Card #1 -->
-      <rs-card>
-        <div class="summary-1 pt-5 pb-3 px-5 flex items-center gap-4">
-          <div
-            class="p-5 flex justify-center items-center bg-warning/20 rounded-2xl"
-          >
-            <Icon class="text-primary" name="ic:outline-attach-money"></Icon>
-          </div>
-          <div class="flex-1 truncate">
-            <span class="block font-semibold text-xl leading-tight">
-              RM0.63</span
-            >
-            <span class="text-base font-semibold text-gray-400"
-              >Shoppepay</span
-
-            
-            >   
-            <rs-button variant="warning" @click="showModal = true">Check Balance</rs-button>
-                      <rs-modal title="Shoppepay Wallet"  v-model="showModal">
-                        <p> Your current balance is RM0.63</p>
-                      </rs-modal>       
-            
-          </div>
-        </div>
-       
-      </rs-card>
-      <!-- Summary Card #2 -->
-      <rs-card>
-        <div class="summary-2 pt-5 pb-3 px-5 flex items-center gap-4">
-          <div
-            class="p-5 flex justify-center items-center bg-yellow-100 rounded-2xl"
-          >
-            <Icon
-              class="text-yellow-500"
-              name="ic:outline-account-circle"
-            ></Icon>
-          </div>
-          <div class="flex-1 truncate">
-            <span class="block font-semibold text-xl leading-tight"> Check-In</span>
-            <span class="text-base font-semibold text-gray-500"
-              >Daily for free coins!</span
-            >
-           
-
-            <rs-button  @click="showModalHideOverlay = true"> Check-In </rs-button>
-                      <rs-modal title="Check In"  v-model="showModalHideOverlay" hide-overlay>
-                       you have earn 1 coin for today !
-                      </rs-modal>
-                     
-          </div>
-        </div>
-       
-      </rs-card>
-      <!-- Summary Card #3 -->
- 
-        
-     
-      <!-- Summary Card #4 -->
-      <rs-card>
-        <div class="summary-4 pt-5 pb-3 px-5 flex items-center gap-4">
-          <div
-            class="p-5 flex justify-center items-center bg-blue-100 rounded-2xl"
-          >
-            <Icon class="text-blue-500" name="svg-spinners:blocks-scale"></Icon>
-          </div>
-          <div class="flex-1 truncate">
-            <span class="block font-semibold text-xl leading-tight">
-              Vouchers</span
-            >
-            <span class="text-base font-semibold text-gray-500"
-              >Vouchers & <p> Discounts</p></span
-            >
-          </div>
-        </div>
-       
-      </rs-card>
+  <div class="p-4 bg-gray-50 rounded-lg shadow">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-2xl font-bold" style="font-family: Arial;">Organization Structure</h1>
+      <button @click="openModal(organizationTree[0])" class="bg-green-500 text-white px-4 py-2 rounded-lg">+ Add</button>
     </div>
+    <ul>
+      <li v-for="(node, index) in organizationTree" :key="index">
+        <TreeNode :node="node" />
+      </li>
+    </ul>
   </div>
 
-  <swiper
-                        :modules="modules"
-                        :slides-per-view="1"
-                        :centeredSlides="true"
-                        :pagination="{ clickable: true }"
-                        @swiper="onSwiper"
-                        @slideChange="onSlideChange"
-                        navigation
-                      >
-                        <swiper-slide v-for="(image, index) in images" :key="index">
-                          <div class="w-full flex justify-center items-center">
-                            <img
-                              :src="image"
-                              class="object-contain w-full md:w-1/2"
-                            />
-                          </div>
-                        </swiper-slide>
-                      </swiper>
-
-
-<h1> Recent Item</h1> 
-                <rs-table
-                
-                  :data="data"
-                  :options="{
-                    variant: 'default',
-                    striped: true,
-                    borderless: true,
-                  }"
-                  :options-advanced="{
-                    sortable: true,
-                    responsive: true,
-                    filterable: false,
-                  }"
-                  advanced
-                >
-                <template v-slot:status="data">
-  <div>
-    <rs-badge v-if="data.text === 'Shipped'" variant="success">
-      {{ data.text }}
-    </rs-badge>
-    <rs-badge v-else-if="data.text === 'Waiting for Courier'" variant="warning">
-      {{ data.text }}
-    </rs-badge>
-    <rs-badge v-else variant="danger">
-      {{ data.text }}
-    </rs-badge>
-  </div>
+  <!-- Modal -->
+  <rs-modal v-model="showModal" title="Add Organization Unit">
+    <form @submit.prevent="saveUnit(unitId, name, description)">
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">Unit Id</label>
+        <input v-model="unitId" type="text" class="w-full border rounded-lg px-3 py-2" required />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">Name*</label>
+        <input v-model="name" type="text" class="w-full border rounded-lg px-3 py-2" required />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">Description</label>
+        <textarea v-model="description" class="w-full border rounded-lg px-3 py-2"></textarea>
+      </div>
+      <p class="text-gray-500 mb-4">This unit will be added under {{ selectedNode?.name }}</p>
+      <div class="flex justify-end gap-4">
+        <button type="button" @click="showModal = false" class="px-4 py-2 border rounded-lg">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-purple-500 text-white rounded-lg">Save</button>
+      </div>
+    </form>
+  </rs-modal>
 </template>
-                </rs-table>
-</template>
+

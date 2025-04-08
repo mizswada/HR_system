@@ -39,35 +39,7 @@ const deletePayGrade = (payGrade) => {
 
 <template>
   <div class="p-4">
-    <div class="flex  items-centre mb-6 gap-2">
-
-<rs-dropdown title="Job" variant="success">
-  <rs-dropdown-item> Job Titles </rs-dropdown-item>
-  <rs-dropdown-item> Pay Grades </rs-dropdown-item>
-  <rs-dropdown-item> Employment Status </rs-dropdown-item>
-  <rs-dropdown-item> Job Categories </rs-dropdown-item>
-  <rs-dropdown-item> Work Shifts </rs-dropdown-item>
-</rs-dropdown>
-<rs-dropdown title="Organization" variant="success">
-  <rs-dropdown-item> Option 1 </rs-dropdown-item>
-  <rs-dropdown-item> Option 2 </rs-dropdown-item>
-  <rs-dropdown-item> Option 3 </rs-dropdown-item>
-</rs-dropdown>
-<rs-dropdown title="Qualifications" variant="success">
-  <rs-dropdown-item> Option 1 </rs-dropdown-item>
-  <rs-dropdown-item> Option 2 </rs-dropdown-item>
-  <rs-dropdown-item> Option 3 </rs-dropdown-item>
-</rs-dropdown>
-
-<rs-button variant="success">Nationalities</rs-button>
-<rs-button variant="success">Corporate Branding</rs-button>
-
-<rs-dropdown title="Configuration" variant="success">
-  <rs-dropdown-item> Option 1 </rs-dropdown-item>
-  <rs-dropdown-item> Option 2 </rs-dropdown-item>
-  <rs-dropdown-item> Option 3 </rs-dropdown-item>
-</rs-dropdown>
-</div>
+   
     <rs-card class="p-4">
       <div class="flex justify-between items-center mb-4">
         <h1 class="text-2xl font-bold" style="font-family: Arial;">Pay Grades</h1>
