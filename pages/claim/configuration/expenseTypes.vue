@@ -67,8 +67,8 @@ export default {
 };
 </script>
 <template>
-    <rs-collapse>
-        <rs-collapse-item title="Expense Types">
+    <RsCollapse>
+      <RsCollapseItem title="Employee Claims" :open="true">
           <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-x-6">
             <FormKit type="text" label="Name" placeholder="Type for hints..."/>
             <FormKit
@@ -82,8 +82,8 @@ export default {
               <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
             </div>
           </div>
-        </rs-collapse-item>
-    </rs-collapse>
+        </RsCollapseItem>
+      </RsCollapse>
 
     <div class="flex justify-start items-center mb-4">
       <rs-button @click="openModal(null, 'add')">

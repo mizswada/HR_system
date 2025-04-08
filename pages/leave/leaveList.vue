@@ -62,8 +62,8 @@ export default {
 };
   </script>
 <template>
-  <rs-collapse>
-    <rs-collapse-item title="Leave List">
+  <RsCollapse>
+    <RsCollapseItem title="Leave List" :open="true">
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-6">
         <FormKit type="date" v-model="fromDate" label="From Date" />
         <FormKit type="date" v-model="toDate" label="To Date" />
@@ -92,8 +92,8 @@ export default {
             <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
             <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
           </div>
-    </rs-collapse-item>
-  </rs-collapse>
+        </RsCollapseItem>
+  </RsCollapse>
 
   <rs-table
   :field="field"

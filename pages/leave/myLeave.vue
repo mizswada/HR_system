@@ -55,32 +55,31 @@ export default {
 };
 </script>
 <template>
-  <rs-collapse >
-    <rs-collapse-item title="My Leave List" :open="true">
-      <div class="bg-white p-6 rounded shadow">
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-x-6">
-          <FormKit type="date" v-model="fromDate" label="From Date" class="flex-1" />
-          <FormKit type="date" v-model="toDate" label="To Date" class="flex-1" />
+  <RsCollapse>
+    <RsCollapseItem title="My Leave List" :open="true">
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-x-6">
+        <FormKit type="date" v-model="fromDate" label="From Date" class="flex-1" />
+        <FormKit type="date" v-model="toDate" label="To Date" class="flex-1" />
+        <FormKit
+            type="select"
+            label="Status"
+            name="statusLeave" 
+            :options="statusLeave"
+            v-model="selectedStatus"
+          />
           <FormKit
-              type="select"
-              label="Status"
-              name="statusLeave" 
-              :options="statusLeave"
-              v-model="selectedStatus"
-            />
-            <FormKit
-              type="select"
-              label="Leave Type"
-              :options="leaveType"
-            />
-            <div class="space-x-4 mt-8">
-              <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
-              <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
-            </div>
-        </div>
+            type="select"
+            label="Leave Type"
+            :options="leaveType"
+          />
+          <div class="space-x-4 mt-8">
+            <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Reset</button>
+            <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
+          </div>
       </div>
-    </rs-collapse-item>
-  </rs-collapse>
+     
+    </RsCollapseItem>
+  </RsCollapse>
 
   <div class="bg-white p-6 rounded shadow mt-6">
     <rs-table

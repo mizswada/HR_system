@@ -4,9 +4,14 @@ const props = defineProps({
     type: String,
     required: false,
   },
+  open: {
+    type: Boolean,
+    default: false
+  }
 });
 const collapseGroup = ref(null);
 const parentID = ref(null);
+const defaultOpen = inject('defaultOpen', []);
 
 const instance = getCurrentInstance();
 
@@ -54,7 +59,24 @@ const onClick = () => {
   }
 };
 
-// On mounted get height collapse header
+const initializeCollapse = () => {
+  if (props.index === null) return;
+  
+  const shouldOpen = Array.isArray(defaultOpen) 
+    ? defaultOpen.includes(props.index)
+    : defaultOpen === props.index;
+
+  if (shouldOpen) {
+    nextTick(() => {
+      const parentElement = document.querySelector(`#${collapseGroup.value.id}`);
+      const scrollHeight = parentElement.scrollHeight;
+      parentElement.style.maxHeight = scrollHeight + "px";
+      parentElement.classList.add("accordion-group--open");
+    });
+  }
+};
+
+// On mounted get height collapse header and initialize state
 onMounted(() => {
   try {
     const parentElement = document.querySelector(
@@ -64,6 +86,16 @@ onMounted(() => {
     const scrollHeight = parentElement.scrollHeight;
     maxHeight.value = scrollHeight;
     height.value = scrollHeight;
+
+    // Initialize open state if prop is true
+    if (props.open) {
+      nextTick(() => {
+        const element = document.querySelector(`#${collapseGroup.value.id}`);
+        const scrollHeight = element.scrollHeight;
+        element.style.maxHeight = scrollHeight + "px";
+        element.classList.add("accordion-group--open");
+      });
+    }
   } catch (error) {
     // console.log(error);
     return;

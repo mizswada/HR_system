@@ -37,6 +37,34 @@
             "null"
           ],
           "format": "date-time"
+        },
+        "auditAction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "auditDetails": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "auditUsername": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "user": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/user"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       }
     },
@@ -101,6 +129,12 @@
             "null"
           ],
           "format": "date-time"
+        },
+        "audit": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/audit"
+          }
         },
         "userrole": {
           "type": "array",
@@ -231,84 +265,6 @@
           "$ref": "#/definitions/user"
         }
       }
-    },
-    "customer": {
-      "type": "object",
-      "properties": {
-        "cust_id": {
-          "type": "integer"
-        },
-        "cust_name": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "cust_type": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "cust_username": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "cust_ic_number": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "cust_address": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "cust_dob": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "date-time"
-        },
-        "cust_gender": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "cust_status": {
-          "type": [
-            "integer",
-            "null"
-          ]
-        },
-        "cust_created_datetime": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "format": "date-time"
-        }
-      }
-    },
-    "product": {
-      "type": "object",
-      "properties": {
-        "productID": {
-          "type": "integer"
-        },
-        "productName": {
-          "type": "string"
-        },
-        "productPrice": {
-          "type": "number"
-        }
-      }
     }
   },
   "type": "object",
@@ -327,12 +283,6 @@
     },
     "userrole": {
       "$ref": "#/definitions/userrole"
-    },
-    "customer": {
-      "$ref": "#/definitions/customer"
-    },
-    "product": {
-      "$ref": "#/definitions/product"
     }
   }
 }

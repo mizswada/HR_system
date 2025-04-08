@@ -66,8 +66,8 @@ export default {
 </script>
 <template>
   <div class="card bg-white p-4 mb-4">
-    <rs-collapse>
-      <rs-collapse-item title="Events">
+    <RsCollapse>
+      <RsCollapseItem title="Employee Claims" :open="true">
         <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-x-6">
           <FormKit type="text" label="Event Name" placeholder="Type for hints..."/>
           <FormKit
@@ -81,8 +81,8 @@ export default {
             <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
           </div>
         </div>
-      </rs-collapse-item>
-    </rs-collapse>
+      </RsCollapseItem>
+    </RsCollapse>
   </div>
 
   <div class="card bg-white p-4 mb-4">

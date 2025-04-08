@@ -151,6 +151,32 @@ export default [
           },
         ],
       },
+      {
+        title: "My Info",
+        icon: "ic:outline-shopping-bag",
+        child: [
+          {
+            title: "Personal Details",
+            path: "/myInfo/personalDetails",
+          },
+          {
+            title: "Contact Details",
+            path: "/myInfo/contactDetails",
+          },
+          {
+            title: "Emergency Contacts",
+            path: "/myInfo/emergencyContact",
+          },
+          {
+            title: "Dependents",
+            path: "/myInfo/dependents",
+          },
+          {
+            title: "Immigration",
+            path: "/myinfo/immigration",
+          },
+        ],
+      },
     ],
   },
   {

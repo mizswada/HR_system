@@ -9,6 +9,9 @@ const props = defineProps({
     default: "default",
   },
 });
+
+// Provide defaultOpen to child components
+provide('defaultOpen', props.defaultOpen);
 </script>
 
 <template>

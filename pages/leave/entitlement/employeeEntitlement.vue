@@ -33,8 +33,8 @@ export default {
 };
 </script>
 <template>
-    <rs-collapse>
-        <rs-collapse-item title="Employee Entitlement">
+    <RsCollapse>
+      <RsCollapseItem title="Employee Entititlement" :open="true">
           <h5 class="font-bold">Leave Entitlement</h5>
           <div class="bg-white p-6 rounded shadow">
             <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-x-6">
@@ -56,6 +56,6 @@ export default {
               </div>
             </div>
           </div>
-        </rs-collapse-item>
-    </rs-collapse>
+        </RsCollapseItem>
+      </RsCollapse>
 </template>
