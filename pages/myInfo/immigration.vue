@@ -21,30 +21,31 @@ export default {
         { value: 'ca', label: 'Canada' },
       ],
       modalType: '',
-      showModal: false,
+      showImmigrationModal: false,
+      showAttachmentModal: false,
     };
   },
   methods: {
     openModalImmigration(record, type) {
       this.modalType = type;
-      this.showModal = true;
+      this.showImmigrationModal = true;
       // Handle record data if editing
     },
     saveImmigration() {
       // Logic to save immigration record
-      this.showModal = false;
+      this.showImmigrationModal = false;
     },
     openModalDeleteImmigration(record) {
       // Logic to handle deletion of immigration record
     },
     openModalAttachment(record, type) {
       this.modalType = type;
-      this.showModal = true;
+      this.showAttachmentModal = true;
       // Handle record data if editing
     },
     saveAttachments() {
       // Logic to save attachment
-      this.showModal = false;
+      this.showAttachmentModal = false;
     },
     openModalDeleteAttachment(record) {
       // Logic to handle deletion of attachment
@@ -94,7 +95,7 @@ export default {
     :title="modalType == 'edit' ? 'Edit Immigration Records' : 'Add Immigration Records'"
     ok-title="Save"
     :ok-callback="saveImmigration"
-    v-model="showModal"
+    v-model="showImmigrationModal"
     :overlay-close="false"
   >             <FormKit
                   type="radio"
@@ -166,7 +167,7 @@ export default {
     :title="modalType == 'edit' ? 'Edit Attachments' : 'Add Attachments'"
     ok-title="Save"
     :ok-callback="saveAttachments"
-    v-model="showModal"
+    v-model="showAttachmentModal"
     :overlay-close="false"
   >
                 <FormKit

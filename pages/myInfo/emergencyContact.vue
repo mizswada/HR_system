@@ -13,7 +13,8 @@ export default {
         { key: 'action', label: 'Action' },
       ],
       data: [], // Replace with actual data source
-      showModal: false,
+      showEmergencyContactModal: false,
+      showAttachmentModal: false,
       modalType: '',
       selectedData: null,
     };
@@ -22,7 +23,7 @@ export default {
     openModalContact(data, type) {
       this.selectedData = data;
       this.modalType = type;
-      this.showModal = true;
+      this.showEmergencyContactModal = true;
     },
     openModalDeleteContact(data) {
       if (confirm('Are you sure you want to delete this emergency contact?')) {
@@ -33,12 +34,12 @@ export default {
     saveContact() {
       // Implement save logic for emergency contacts here
       console.log('Saved Emergency Contact:', this.selectedData);
-      this.showModal = false;
+      this.showEmergencyContactModal = false;
     },
     openModalAttachment(data, type) {
       this.selectedData = data;
       this.modalType = type;
-      this.showModal = true;
+      this.showAttachmentModal = true;
     },
     openModalDeleteAttachment(data) {
       if (confirm('Are you sure you want to delete this attachment?')) {
@@ -49,7 +50,7 @@ export default {
     saveAttachments() {
       // Implement save logic for attachments here
       console.log('Saved Attachment:', this.selectedData);
-      this.showModal = false;
+      this.showAttachmentModal = false;
     },
   },
 };
@@ -96,7 +97,7 @@ export default {
     :title="modalType == 'edit' ? 'Edit Emergency Contact' : 'Add Emergency Contact'"
     ok-title="Save"
     :ok-callback="saveContact"
-    v-model="showModal"
+    v-model="showEmergencyContactModal"
     :overlay-close="false"
   >
                 <FormKit 
@@ -159,7 +160,7 @@ export default {
     :title="modalType == 'edit' ? 'Edit Attachments' : 'Add Attachments'"
     ok-title="Save"
     :ok-callback="saveAttachments"
-    v-model="showModal"
+    v-model="showAttachmentModal"
     :overlay-close="false"
   >
                 <FormKit

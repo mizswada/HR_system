@@ -16,7 +16,8 @@ export default {
         { value: 'child', label: 'Child' },
         { value: 'other', label: 'Other' },
       ],
-      showModal: false,
+      showDependentModal: false,
+      showAttachmentModal: false,
       modalType: '',
       selectedData: null,
     };
@@ -25,7 +26,7 @@ export default {
     openModalDependent(data, type) {
       this.selectedData = data;
       this.modalType = type;
-      this.showModal = true;
+      this.showDependentModal = true;
     },
     openModalDeleteDependent(data) {
       if (confirm('Are you sure you want to delete this dependent?')) {
@@ -36,12 +37,12 @@ export default {
     saveDependent() {
       // Implement save logic for dependents here
       console.log('Saved Dependent:', this.selectedData);
-      this.showModal = false;
+      this.showDependentModal = false;
     },
     openModalAttachment(data, type) {
       this.selectedData = data;
       this.modalType = type;
-      this.showModal = true;
+      this.showAttachmentModal = true;
     },
     openModalDeleteAttachment(data) {
       if (confirm('Are you sure you want to delete this attachment?')) {
@@ -52,7 +53,7 @@ export default {
     saveAttachments() {
       // Implement save logic for attachments here
       console.log('Saved Attachment:', this.selectedData);
-      this.showModal = false;
+      this.showAttachmentModal = false;
     },
   },
 };
@@ -99,7 +100,7 @@ export default {
     :title="modalType == 'edit' ? 'Edit Dependent' : 'Add Dependent'"
     ok-title="Save"
     :ok-callback="saveDependent"
-    v-model="showModal"
+    v-model="showDependentModal"
     :overlay-close="false"
   >
                 <FormKit 
@@ -161,7 +162,7 @@ export default {
     :title="modalType == 'edit' ? 'Edit Attachments' : 'Add Attachments'"
     ok-title="Save"
     :ok-callback="saveAttachments"
-    v-model="showModal"
+    v-model="showAttachmentModal"
     :overlay-close="false"
   >
                 <FormKit
