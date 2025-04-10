@@ -35,6 +35,11 @@ export default {
       ],
     };
   },
+  methods: {
+    navigateToAssignClaim() {
+      this.$router.push('/claim/assignClaim');
+    },
+  },
 };
 </script>
 <template>
@@ -75,7 +80,7 @@ export default {
 
   <div class="card bg-white p-4 mb-4">
     <div class="flex justify-start items-center mb-4">
-      <rs-button @click="openModal(null, 'add')">
+      <rs-button @click="navigateToAssignClaim">
         <Icon name="material-symbols:add" class="mr-1"></Icon>
           Assign Claim
       </rs-button>

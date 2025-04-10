@@ -34,7 +34,7 @@ export default {
 </script>
 <template>
   <div class="card bg-white p-4 mb-4">
-    <h3>Create My Claims</h3>
+    <h3>Create Claims</h3>
     <FormKit
           type="select"
           label="Event"
@@ -54,7 +54,7 @@ export default {
           validation="required"
           :options="ExpenseTypes"
         />
-        <FormKit type="date" :value="date" label="Date Only" />
+        <FormKit type="date" :value="date" label="Date" />
         <FormKit 
           type="text" 
           label="Amount"
