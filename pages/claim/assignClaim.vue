@@ -18,6 +18,14 @@ export default {
         { label: "Euro", value: "eu" },
         { label: "British Pound", value: "uk" },
       ],
+      ExpenseTypes: [
+        { label: "--Select--", value: "st" },
+        { label: "Travel", value: "travel" },
+        { label: "Accommodation", value: "accommodation" },
+        { label: "Food", value: "food" },
+        { label: "Miscellaneous", value: "misc" },
+      ], // Define ExpenseTypes if it's static data
+      date: null,
     };
   },
 };
@@ -38,7 +46,29 @@ export default {
         validation="required"
         :options="currency"
     />
-    <FormKit type="textarea" rows="3" label="Remarks" />
+    <FormKit type="textarea" placeholder="Type Remarks Here" label="Remarks"/>
+        <FormKit
+          type="select"
+          label="Expense Type"
+          validation="required"
+          :options="ExpenseTypes"
+        />
+        <FormKit type="date" :value="date" label="Date" />
+        <FormKit 
+          type="text" 
+          label="Amount"
+          validation="required"
+          validation-visibility="dirty"
+        />
+        <FormKit
+          type="file"
+          label="Select Attachment"
+          validation="required"
+          accept=".pdf,.doc,.docx,.xml,.md,.csv"
+          help="Accept up to 1MB"
+        />
+
+        <FormKit type="textarea" label="Comment"/>
 
     <div class="flex justify-end space-x-4 mt-4">
       <button @click="resetFilters" class="bg-blue-500 text-white px-4 py-2 rounded">Cancel</button>

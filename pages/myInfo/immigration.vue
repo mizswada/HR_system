@@ -4,14 +4,24 @@ import { ref } from 'vue';
 export default {
   data() {
     return {
-      field: [
-        { key: 'document', label: 'Document' },
-        { key: 'number', label: 'Number' },
-        { key: 'issuedBy', label: 'Issued By' },
-        { key: 'eligibleReviewDate', label: 'Eligible Review Date' },
-        { key: 'action', label: 'Action' },
+
+      immigrationData: [
+        {
+          document: "Passport",
+          number: "A12345678",
+          issuedBy: "United States",
+          eligibleReviewDate: "2025-12-01",
+          action: "edit",
+        },
       ],
-      data: [], // Replace with actual data
+      attachmentsData: [
+        {
+          fileName: "ImmigrationDocument.pdf",
+          uploadedDate: "2023-10-01",
+          comment: "Passport scan",
+          action: "edit",
+        },
+      ],
       document: [
         { value: 'passport', label: 'Passport' },
         { value: 'visa', label: 'Visa' },
@@ -23,6 +33,7 @@ export default {
       modalType: '',
       showImmigrationModal: false,
       showAttachmentModal: false,
+      selectedData: null,
     };
   },
   methods: {
@@ -64,7 +75,7 @@ export default {
         </div>
         <rs-table
       :field="field"
-      :data="data"
+      :data="immigrationData"
       :options="{
         variant: 'default',
         striped: true,
@@ -136,7 +147,7 @@ export default {
         </div>
         <rs-table
       :field="field"
-      :data="data"
+      :data="attachmentsData"
       :options="{
         variant: 'default',
         striped: true,

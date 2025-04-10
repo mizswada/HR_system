@@ -4,15 +4,24 @@ import { ref } from 'vue';
 export default {
   data() {
     return {
-      field: [
-        { key: 'name', label: 'Name' },
-        { key: 'relationship', label: 'Relationship' },
-        { key: 'homeTelephone', label: 'Home Telephone' },
-        { key: 'mobile', label: 'Mobile' },
-        { key: 'workTelephone', label: 'Work Telephone' },
-        { key: 'action', label: 'Action' },
+      emergencyContactData: [
+        {
+          name: "Jane Doe",
+          relationship: "Wife",
+          homeTelephone: "03-1234567",
+          mobileTelephone: "012-3456789",
+          workTelephone: "",
+          action: "edit",
+        },
       ],
-      data: [], // Replace with actual data source
+      attachmentsData: [
+        {
+          fileName: "Jane.pdf",
+          uploadedDate: "2023-10-01",
+          comment: "",
+          action: "edit",
+        },
+      ],
       showEmergencyContactModal: false,
       showAttachmentModal: false,
       modalType: '',
@@ -66,7 +75,7 @@ export default {
         </div>
         <rs-table
       :field="field"
-      :data="data"
+      :data="emergencyContactData"
       :options="{
         variant: 'default',
         striped: true,
@@ -129,7 +138,7 @@ export default {
         </div>
         <rs-table
       :field="field"
-      :data="data"
+      :data="attachmentsData"
       :options="{
         variant: 'default',
         striped: true,

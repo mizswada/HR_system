@@ -134,8 +134,8 @@ export default [
             ],
           },
           {
-            title: "Submit Claim",
-            path: "/claim/submitClaim",
+            title: "Create Claim",
+            path: "/claim/createClaim",
           },
           {
             title: "My Claims",

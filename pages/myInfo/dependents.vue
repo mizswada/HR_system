@@ -4,13 +4,22 @@ import { ref } from 'vue';
 export default {
   data() {
     return {
-      field: [
-        { key: 'name', label: 'Name' },
-        { key: 'relationship', label: 'Relationship' },
-        { key: 'dateOfBirth', label: 'Date of Birth' },
-        { key: 'action', label: 'Action' },
+      dependentData: [
+        {
+          name: "John Doe",
+          relationship: "Child",
+          dateOfBirth: "2010-05-15",
+          action: "edit",
+        },
       ],
-      data: [], // Replace with actual data source
+      attachmentsData: [
+        {
+          fileName: "DependentDocument.pdf",
+          uploadedDate: "2023-10-01",
+          comment: "Birth certificate",
+          action: "edit",
+        },
+      ],
       relationship: [
         { value: 'spouse', label: 'Spouse' },
         { value: 'child', label: 'Child' },
@@ -69,7 +78,7 @@ export default {
         </div>
         <rs-table
       :field="field"
-      :data="data"
+      :data="dependentData"
       :options="{
         variant: 'default',
         striped: true,
@@ -131,7 +140,7 @@ export default {
         </div>
         <rs-table
       :field="field"
-      :data="data"
+      :data="attachmentsData"
       :options="{
         variant: 'default',
         striped: true,

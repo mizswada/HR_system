@@ -17,7 +17,39 @@ export default {
         { label: "Rejected", value: "re" },
         { label: "Cancelled", value: "ca" },
       ],
+      data: [
+        {
+          "ReferenceID": "202504100000009",
+          "employeeName": "John Doe",
+          "eventName": "Office",
+          "expenseTypes": "Petrol",
+          "currency": "Malaysia Ringgit",
+          "submittedDate": "20/5/2025",
+          "status": "Rejected",
+          "amount": "40.00",
+          "attachments": "Receipt.pdf",
+          "action": "edit",
+        },
+
+        {
+          "ReferenceID": "202504100000010",
+          "employeeName": "John Doe",
+          "eventName": "Office",
+          "expenseTypes": "Airfare",
+          "currency": "Malaysia Ringgit",
+          "submittedDate": "14/5/2025",
+          "status": "Approved",
+          "amount": "250.00",
+          "attachments": "Receipt.pdf",
+          "action": "edit",
+        },
+      ],
     };
+  },
+  methods: {
+    navigateToCreateClaim() {
+      this.$router.push('/claim/createClaim');
+    },
   },
 };
 </script>
@@ -52,7 +84,7 @@ export default {
 
   <div class="card bg-white p-4 mb-4">
     <div class="flex justify-start items-center mb-4">
-      <rs-button @click="openModalClaim(null, 'add')">
+      <rs-button @click="navigateToCreateClaim">
         <Icon name="material-symbols:add" class="mr-1"></Icon>
           Create Claim
       </rs-button>
@@ -69,13 +101,18 @@ export default {
       }"
       basic
     >
-      <template v-slot:action="data">
+      <template v-slot:attachments="{ value }">
+        <a :href="value.attachments" target="_blank" class="text-blue-500 underline">
+          View Attachment
+        </a>
+      </template>
+      <template v-slot:action="{ value }">
         <div class="flex justify-center items-center">
           <Icon
             name="material-symbols:edit-outline-rounded"
             class="text-primary hover:text-primary/90 cursor-pointer mr-1"
             size="22"
-            @click="openModal(data.value, 'edit')"
+            @click="openModal(value, 'edit')"
           ></Icon>
         </div>
       </template>

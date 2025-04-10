@@ -7,7 +7,7 @@ export default {
           name: "John Doe",
           date: "15/5/2025",
           "fullDay/HalfDay": "Full Day",
-          repeatsAnnualy: "Yes",
+          repeatsAnnualy: "No",
           action: "edit",
         },
       ],
@@ -56,8 +56,8 @@ export default {
 </script>
 <template>
   <div class="bg-white p-4 rounded shadow mb-4">
-    <rs-collapse>
-      <rs-collapse-item title="Holidays">
+    <RsCollapse>
+      <RsCollapseItem title="Holidays" :open="true">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-6">
           <FormKit type="date" v-model="fromDate" label="From Date" />
           <FormKit type="date" v-model="toDate" label="To Date" />
@@ -66,8 +66,8 @@ export default {
             <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Search</button>
           </div>
         </div>
-      </rs-collapse-item>
-    </rs-collapse>
+      </RsCollapseItem>
+    </RsCollapse>
   </div>
   <div class="bg-white p-4 rounded shadow mb-4">
     <div class="flex justify-start items-center mb-4">

@@ -24,16 +24,41 @@ export default {
       ],
       fromDate: null,
       toDate: null,
-      field: [
-        { key: "employeeName", label: "Employee Name" },
-        { key: "referenceId", label: "Reference ID" },
-        { key: "eventName", label: "Event Name" },
-        { key: "status", label: "Status" },
-        { key: "submittedDate", label: "Submitted Date" },
-        { key: "amount", label: "Amount" },
-        { key: "action", label: "Action" },
+      data: [
+        {
+          "ReferenceID": "202504100000011",
+          "employeeName": "Firdaus Ahmad",
+          "eventName": "Office",
+          "expenseTypes": "Petrol",
+          "currency": "Malaysia Ringgit",
+          "submittedDate": "20/5/2025",
+          "status": "Pending Approval",
+          "amount": "40.00",
+          "attachments": "Receipt.pdf",
+          "action": "edit",
+        },
+
+        {
+          "ReferenceID": "202504100000014",
+          "employeeName": "Arif Kamil",
+          "eventName": "Office",
+          "expenseTypes": "Airfare",
+          "currency": "Malaysia Ringgit",
+          "submittedDate": "14/5/2025",
+          "status": "Approved",
+          "amount": "250.00",
+          "attachments": "Receipt.pdf",
+          "action": "edit",
+        },
       ],
     };
+
+    
+  },
+  methods: {
+    navigateToAssignClaim() {
+      this.$router.push('/claim/assignClaim');
+    },
   },
 };
 </script>
@@ -75,7 +100,7 @@ export default {
 
   <div class="card bg-white p-4 mb-4">
     <div class="flex justify-start items-center mb-4">
-      <rs-button @click="openModal(null, 'add')">
+      <rs-button @click="navigateToAssignClaim">
         <Icon name="material-symbols:add" class="mr-1"></Icon>
           Assign Claim
       </rs-button>
@@ -93,13 +118,18 @@ export default {
       }"
       basic
     >
-      <template v-slot:action="data">
+    <template v-slot:attachments="{ value }">
+        <a :href="value.attachments" target="_blank" class="text-blue-500 underline">
+          View Attachment
+        </a>
+      </template>
+      <template v-slot:action="{ value }">
         <div class="flex justify-center items-center">
           <Icon
             name="material-symbols:edit-outline-rounded"
             class="text-primary hover:text-primary/90 cursor-pointer mr-1"
             size="22"
-            @click="openModal(data.value, 'edit')"
+            @click="openModal(value, 'edit')"
           ></Icon>
         </div>
       </template>

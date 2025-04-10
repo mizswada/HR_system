@@ -24,12 +24,12 @@ export default {
       data: [
         {
           "date": "15/5/2025",
-          "employeeName": "Naim Danial",
+          "employeeName": "John Doe",
           "leaveType": "Annual Leave",
           "leaveBalance": "15",
           "numberofDays": "5",
           "status": "Scheduled",
-          "comments": "Going to Japan",
+          "comments": "",
           "action": "edit",
         },
       ],
