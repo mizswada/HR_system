@@ -43,8 +43,8 @@ export default {
 
 </script>
 <template>
-    <rs-collapse>
-      <rs-collapse-item title="My Employee Entitlement">
+    <RsCollapse>
+      <RsCollapseItem title="My Employee Entitlement" :open="true">
         <div class="bg-white p-6 rounded shadow">
           <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-x-6">
             <FormKit
@@ -64,8 +64,8 @@ export default {
             </div>
           </div>
         </div>
-      </rs-collapse-item>
-    </rs-collapse>
+      </RsCollapseItem>
+    </RsCollapse>
     <div class="bg-white p-6 rounded shadow mb-4">
       <div class="flex justify-start items-center mb-4">
         <rs-button @click="openModal(null, 'add')">

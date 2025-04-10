@@ -52,9 +52,9 @@ export default {
 
   <div class="card bg-white p-4 mb-4">
     <div class="flex justify-start items-center mb-4">
-      <rs-button @click="openModal(null, 'add')">
+      <rs-button @click="openModalClaim(null, 'add')">
         <Icon name="material-symbols:add" class="mr-1"></Icon>
-          Submit Claim
+          Create Claim
       </rs-button>
     </div>
     <rs-table

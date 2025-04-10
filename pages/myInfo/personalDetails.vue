@@ -54,7 +54,7 @@ export default {
 <template>
     <div class="outline-container border p-4 mb-4">
         <div class="flex items-center mb-4">
-            <img src="/path/to/default-profile.jpg" alt="Profile Picture" class="w-24 h-24 rounded-full mr-4" />
+            <img src=""@/assets/img/DefaultProfile.jpg"" alt="Profile Picture" class="w-24 h-24 rounded-full mr-4" />
             <h5 class="font-bold text-lg">John Doe</h5>
         </div>
         <h5 class="font-bold">Personal Details</h5>

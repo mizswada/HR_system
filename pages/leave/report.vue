@@ -63,8 +63,8 @@ export default {
 };
 </script>
 <template>
-    <rs-collapse>
-        <rs-collapse-item title="Leave Entitlemets and Usage Report">
+    <RsCollapse>
+      <RsCollapseItem title="Leave Entitlements & Usage Report" :open="true">
             <div class="mb-4">
                 <label>
                     <input type="radio" value="leave" v-model="formType" /> Leave Type
@@ -117,6 +117,6 @@ export default {
             <div class="flex justify-end space-x-4 mt-4">
                 <button @click="searchLeaves" class="bg-green-500 text-white px-4 py-2 rounded">Generate</button>
             </div>
-        </rs-collapse-item>
-    </rs-collapse>
+          </RsCollapseItem>
+      </RsCollapse>
 </template>
