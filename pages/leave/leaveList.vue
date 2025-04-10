@@ -30,13 +30,13 @@ export default {
       selectedSubUnit: [],
       data: [
         {
-          "date": "15/5/2025",
-          "employeeName": "Naim Danial",
+          "date": "15/4/2025",
+          "employeeName": "Jane Doe",
           "leaveType": "Annual Leave",
-          "leaveBalance": "15",
+          "leaveBalance": "10",
           "numberofDays": "5",
           "status": "Scheduled",
-          "comments": "Going to Japan",
+          "comments": "",
           "action": "edit",
         },
       ],

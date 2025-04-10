@@ -22,12 +22,26 @@ export default {
       ],
       selectedLeaveType: [],
       selectedPeriod: [],
+
+      data: [
+        {
+          "leaveType": "Annual Leave",
+          "entitlementType": "Added",
+          "validFrom": "01-01-2025",
+          "validTo": "31-12-2025",
+          "Days": "5",
+          "action": "edit",
+        },
+      ],
     };
   },
   methods: {
     searchLeaves() {
       console.log("Selected Leave Type:", this.selectedLeaveType);
       console.log("Selected Leave Period:", this.selectedPeriod);
+    },
+    navigateToEmployeeEntitlement() {
+      this.$router.push('/leave/entitlement/addEntitlement');
     },
   },
 };
@@ -58,4 +72,43 @@ export default {
           </div>
         </RsCollapseItem>
       </RsCollapse>
+
+      <div class="card bg-white p-4 mb-4">
+    <div class="flex justify-start items-center mb-4">
+      <rs-button @click="navigateToEmployeeEntitlement">
+        <Icon name="material-symbols:add" class="mr-1"></Icon>
+          Add
+      </rs-button>
+    </div>
+
+    <rs-table
+      :field="field"
+      :data="data"
+      :options="{
+        variant: 'default',
+        striped: true,
+        borderless: true,
+        hover: true,
+        fixed: false,
+      }"
+      basic
+    >
+      <template v-slot:action="{ value }">
+        <div class="flex justify-center items-center">
+          <Icon
+            name="material-symbols:edit-outline-rounded"
+            class="text-primary hover:text-primary/90 cursor-pointer mr-1"
+            size="22"
+            @click="openModal(value, 'edit')"
+          ></Icon>
+          <Icon
+            name="material-symbols:close-rounded"
+            class="text-primary hover:text-primary/90 cursor-pointer"
+            size="22"
+            @click="openModalDelete(data.value)"
+          ></Icon>
+        </div>
+      </template>
+    </rs-table>
+  </div>
 </template>

@@ -9,13 +9,19 @@ export default {
         { value: 'active', label: 'Active' },
         { value: 'inactive', label: 'Inactive' },
       ],
-      field: [
-        { key: 'expenseType', label: 'Expense Type' },
-        { key: 'description', label: 'Description' },
-        { key: 'status', label: 'Status' },
-        { key: 'action', label: 'Action' },
+     data: [
+        {
+          "name": "Accomadation",
+          "status": "Active",
+          "action": "edit",
+        },
+
+        {
+          "name": "Petrol",
+          "status": "Active",
+          "action": "edit",
+        },
       ],
-      data: [],
       showModal: false,
       modalType: '',
       showModalForm: {
@@ -68,7 +74,7 @@ export default {
 </script>
 <template>
     <RsCollapse>
-      <RsCollapseItem title="Employee Claims" :open="true">
+      <RsCollapseItem title="Expense Type" :open="true">
           <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-x-6">
             <FormKit type="text" label="Name" placeholder="Type for hints..."/>
             <FormKit

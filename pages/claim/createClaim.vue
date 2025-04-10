@@ -28,7 +28,15 @@ export default {
         { label: "Miscellaneous", value: "misc" },
       ], // Define ExpenseTypes if it's static data
       date: null,
+      attachment: null, // Add a property to store the selected file
     };
+  },
+  methods: {
+    handleFileUpload(file) {
+      this.attachment = file; // Store the selected file
+      console.log("Selected file:", file); // Debugging or further processing
+    },
+    // ...existing code...
   },
 };
 </script>
@@ -67,6 +75,7 @@ export default {
           validation="required"
           accept=".pdf,.doc,.docx,.xml,.md,.csv"
           help="Accept up to 1MB"
+          @input="handleFileUpload($event)"
         />
 
         <FormKit type="textarea" label="Note"/>

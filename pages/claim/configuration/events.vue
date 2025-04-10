@@ -7,13 +7,19 @@ export default {
         { value: 'active', label: 'Active' },
         { value: 'inactive', label: 'Inactive' },
       ],
-      field: [
-        { key: 'eventName', label: 'Event Name' },
-        { key: 'description', label: 'Description' },
-        { key: 'status', label: 'Status' },
-        { key: 'action', label: 'Action' },
+      data: [
+        {
+          "name": "Office",
+          "status": "Active",
+          "action": "edit",
+        },
+
+        {
+          "name": "Meeting",
+          "status": "Active",
+          "action": "edit",
+        },
       ],
-      data: [],
       showModal: false,
       modalType: '',
       showModalForm: {
