@@ -1,7 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 
-const employmentStatuses = ref([]);
+const employmentStatuses = ref([
+  { status: 'Full-Time Permanent' },
+  { status: 'Part-Time Permanent' },
+  { status: 'Full-Time Contract' },
+  { status: 'Part-Time Contract' },
+  { status: 'Internship' }
+]);
 
 const showStatusModal = ref(false);
 const showStatusModalForm = ref({

@@ -24,7 +24,7 @@ const organizationTree = ref([
         ],
       },
       {
-        name: "sfsdf: fdsfsd",
+        name: "S004: Sales Department",
         expanded: false,
         children: [],
       },
@@ -126,10 +126,7 @@ const TreeNode = defineComponent({
         <textarea v-model="description" class="w-full border rounded-lg px-3 py-2"></textarea>
       </div>
       <p class="text-gray-500 mb-4">This unit will be added under {{ selectedNode?.name }}</p>
-      <div class="flex justify-end gap-4">
-        <button type="button" @click="showModal = false" class="px-4 py-2 border rounded-lg">Cancel</button>
-        <button type="submit" class="px-4 py-2 bg-purple-500 text-white rounded-lg">Save</button>
-      </div>
+     
     </form>
   </rs-modal>
 </template>

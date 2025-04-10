@@ -1,6 +1,12 @@
 <script setup>
 
-const payGrades = ref([]);
+const payGrades = ref([
+  { name: 'Grade A', currency: 'USD' },
+  { name: 'Grade B', currency: 'EUR' },
+  { name: 'Grade C', currency: 'GBP' },
+  { name: 'Grade D', currency: 'JPY' },
+  { name: 'Grade E', currency: 'AUD' }
+]);
 
 const showModal = ref(false);
 const showModalForm = ref({

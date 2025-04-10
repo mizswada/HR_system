@@ -1,7 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 
-const terminationReasons = ref([]);
+const terminationReasons = ref([
+  { reason: 'Resignation' },
+  { reason: 'Retirement' },
+  { reason: 'Termination due to Performance' },
+  { reason: 'Layoff' },
+  { reason: 'End of Contract' }
+]);
 
 const showReasonModal = ref(false);
 const showReasonModalForm = ref({

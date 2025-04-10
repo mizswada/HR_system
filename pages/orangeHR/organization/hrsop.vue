@@ -3,7 +3,13 @@ import { ref } from 'vue';
 
 
 
-const jobTitles = ref([]);
+const jobTitles = ref([
+  { title: 'Employee Handbook', department: 'Human Resources', description: 'Guidelines and policies for employees.', documents: null },
+  { title: 'Recruitment Process', department: 'Human Resources', description: 'Steps and procedures for hiring new employees.', documents: null },
+  { title: 'Performance Review', department: 'Human Resources', description: 'Evaluation process for employee performance.', documents: null },
+  { title: 'Leave Policy', department: 'Human Resources', description: 'Details about leave entitlements and procedures.', documents: null },
+  { title: 'Code of Conduct', department: 'Human Resources', description: 'Rules and regulations for employee behavior.', documents: null }
+]);
 
 const showTitleModal = ref(false);
 const showTitleModalForm = ref({
@@ -71,7 +77,7 @@ const deleteSelectedTitles = () => {
             <div class="flex items-center gap-2">
               <input type="checkbox" v-model="selectedTitles" :value="title.title" />
               <div>
-                <h6 class="font-semibold text-gray-700" style="font-family: Arial;">Job Title</h6>
+                <h6 class="font-semibold text-gray-700" style="font-family: Arial;">SOP</h6>
                 <p class="text-gray-500 text-lg" style="font-family: Arial;">{{ title.title }}</p>
               </div>
             </div>
