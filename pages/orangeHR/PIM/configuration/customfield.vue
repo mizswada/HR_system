@@ -2,16 +2,19 @@
 import { ref } from 'vue';
 
 const reportingMethods = ref([
-  { method: 'Email' },
-  { method: 'Phone Call' },
-  { method: 'In-Person Meeting' },
-  { method: 'Online Form' },
-  { method: 'Postal Mail' }
+  { method: 'Employee ID', fieldName: 'Employee ID', screen: 'Personal Details', type: 'Text or Number' },
+  { method: 'Emergency Contact Name', fieldName: 'Emergency Contact Name', screen: 'Emergency Contacts', type: 'Text or Number' },
+  { method: 'Dependent Relationship', fieldName: 'Dependent Relationship', screen: 'Dependents', type: 'Drop Down' },
+  { method: 'Passport Number', fieldName: 'Passport Number', screen: 'Immigration', type: 'Text or Number' },
+  { method: 'Phone Number', fieldName: 'Phone Number', screen: 'Contact Details', type: 'Text or Number' }
 ]);
 
 const showMethodModal = ref(false);
 const showMethodModalForm = ref({
   method: '',
+  fieldName: '',
+  screen: '',
+  type: '',
 });
 
 const selectedMethods = ref([]);
@@ -23,6 +26,9 @@ const openMethodModal = (method = null) => {
     editingMethod = method;
   } else {
     showMethodModalForm.value.method = '';
+    showMethodModalForm.value.fieldName = '';
+    showMethodModalForm.value.screen = '';
+    showMethodModalForm.value.type = '';
     editingMethod = null;
   }
   showMethodModal.value = true;
@@ -53,7 +59,7 @@ const deleteSelectedMethods = () => {
   <div class="p-4">
     <rs-card class="p-4 mt-8">
       <div class="flex justify-between items-center mb-4">
-        <h1 class="text-2xl font-bold" style="font-family: Arial;">Reporting Methods</h1>
+        <h1 class="text-2xl font-bold" style="font-family: Arial;">Custom Fields</h1>
         <button class="bg-green-600 text-white py-2 px-4 rounded-full" @click="openMethodModal()" style="font-family: Arial;">+ Add</button>
       </div>
       <hr class="mb-4">
@@ -68,7 +74,7 @@ const deleteSelectedMethods = () => {
             <div class="flex items-center gap-2">
               <input type="checkbox" v-model="selectedMethods" :value="method.method" />
               <div>
-                <h6 class="font-semibold text-gray-700" style="font-family: Arial;">Reporting Method</h6>
+                <h6 class="font-semibold text-gray-700" style="font-family: Arial;">Custom Field</h6>
                 <p class="text-gray-500 text-lg" style="font-family: Arial;">{{ method.method }}</p>
               </div>
             </div>
@@ -84,8 +90,24 @@ const deleteSelectedMethods = () => {
         </rs-card>
       </div>
 
-      <rs-modal title="Reporting Method" v-model="showMethodModal" ok-title="Save" :ok-callback="saveReportingMethod">
-        <FormKit type="text" v-model="showMethodModalForm.method" name="Name" label="Name" style="font-family: Arial;" />
+      <rs-modal title="Add Custom Field" v-model="showMethodModal" ok-title="Save" :ok-callback="saveReportingMethod">
+        <FormKit type="text" v-model="showMethodModalForm.fieldName" name="Field Name" label="Field Name*" style="font-family: Arial;" />
+        <FormKit
+          type="select"
+          v-model="showMethodModalForm.screen"
+          name="Screen"
+          label="Screen*"
+          :options="['-- Select --', 'Personal Details', 'Contact Details', 'Emergency Contacts', 'Dependents', 'Immigration']"
+          style="font-family: Arial;"
+        />
+        <FormKit
+          type="select"
+          v-model="showMethodModalForm.type"
+          name="Type"
+          label="Type*"
+          :options="['-- Select --', 'Text or Number', 'Drop Down']"
+          style="font-family: Arial;"
+        />
       </rs-modal>
     </rs-card>
   </div>

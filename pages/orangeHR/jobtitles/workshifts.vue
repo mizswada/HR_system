@@ -1,7 +1,11 @@
 <script setup>
 import { ref } from 'vue';
 
-const workShifts = ref([]);
+const workShifts = ref([
+  { name: 'Morning Shift', from: '08:00 AM', to: '04:00 PM', hoursPerDay: 8 },
+  { name: 'Evening Shift', from: '04:00 PM', to: '12:00 AM', hoursPerDay: 8 },
+  { name: 'Night Shift', from: '12:00 AM', to: '08:00 AM', hoursPerDay: 8 }
+]);
 
 const showShiftModal = ref(false);
 const showShiftModalForm = ref({

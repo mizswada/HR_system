@@ -1,7 +1,11 @@
 <script setup>
 import { ref } from 'vue';
 
-const jobCategories = ref([]);
+const jobCategories = ref([
+  { category: 'Software Engineer' },
+  { category: 'Data Analyst' },
+  { category: 'HR Manager' }
+]);
 
 const showCategoryModal = ref(false);
 const showCategoryModalForm = ref({
@@ -71,7 +75,7 @@ const include = [
                       ];
  
 const group = [
-                        "Peronal",
+                        "Personal",
                         "Contact Details", 
                         "Emergency Contacts",
                         "Dependents",

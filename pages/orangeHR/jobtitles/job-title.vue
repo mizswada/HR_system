@@ -1,7 +1,15 @@
 <script setup>
 import { ref } from 'vue';
 
-const jobTitles = ref([]);
+
+
+const jobTitles = ref([
+  { title: 'Software Engineer' },
+  { title: 'Project Manager' },
+  { title: 'HR Specialist' },
+  { title: 'Data Analyst' },
+  { title: 'Marketing Coordinator' }
+]);
 
 const showTitleModal = ref(false);
 const showTitleModalForm = ref({
@@ -78,6 +86,7 @@ const deleteSelectedTitles = () => {
           </div>
         </rs-card>
       </div>
+
 
       <rs-modal title="Job Title" v-model="showTitleModal" ok-title="Save" :ok-callback="saveJobTitle">
         <FormKit type="text" v-model="showTitleModalForm.title" name="title" label="Title" style="font-family: Arial;" />

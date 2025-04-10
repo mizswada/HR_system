@@ -1,7 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 
-const jobCategories = ref([]);
+const jobCategories = ref([
+  { category: 'IT and Software' },
+  { category: 'Human Resources' },
+  { category: 'Finance and Accounting' },
+  { category: 'Marketing and Sales' },
+  { category: 'Customer Support' }
+]);
 
 const showCategoryModal = ref(false);
 const showCategoryModalForm = ref({

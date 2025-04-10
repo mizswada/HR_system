@@ -1,7 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 
-const jobTitles = ref([]);
+const jobTitles = ref([
+  { name: 'Kuala Lumpur Office', city: 'Kuala Lumpur', country: 'Malaysia', phone: '03-12345678', numberOfEmployees: 150 },
+  { name: 'Singapore Branch', city: 'Singapore', country: 'Singapore', phone: '65-98765432', numberOfEmployees: 80 },
+  { name: 'Bangkok Office', city: 'Bangkok', country: 'Thailand', phone: '66-23456789', numberOfEmployees: 120 },
+  { name: 'Jakarta Office', city: 'Jakarta', country: 'Indonesia', phone: '62-34567890', numberOfEmployees: 100 },
+  { name: 'Brunei HQ', city: 'Bandar Seri Begawan', country: 'Brunei', phone: '673-45678901', numberOfEmployees: 50 }
+]);
 
 const showTitleModal = ref(false);
 const showTitleModalForm = ref({

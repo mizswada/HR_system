@@ -4,17 +4,14 @@ import { ref } from 'vue';
 
 
 const jobTitles = ref([
-  { title: 'Software Engineer' },
-  { title: 'Data Analyst' },
-  { title: 'HR Manager' }
+  { title: 'Federal Tax Exemption - Single' },
+  { title: 'State Tax Exemption - Married' },
+  { title: 'Unemployment Tax Exemption - Head of Household' }
 ]);
 
 const showTitleModal = ref(false);
 const showTitleModalForm = ref({
   title: '',
-  department: '',
-  description: '',
-  documents: null,
 });
 
 const selectedTitles = ref([]);
@@ -26,9 +23,6 @@ const openTitleModal = (title = null) => {
     editingTitle = title;
   } else {
     showTitleModalForm.value.title = '';
-    showTitleModalForm.value.department = '';
-    showTitleModalForm.value.description = '';
-    showTitleModalForm.value.documents = null;
     editingTitle = null;
   }
   showTitleModal.value = true;
@@ -54,40 +48,26 @@ const deleteSelectedTitles = () => {
   selectedTitles.value = [];
 };
 
-const employmentStatusOptions = [
-  { label: "Full-Time", value: "full-time" },
-  { label: "Part-Time", value: "part-time" },
-  { label: "Contract", value: "contract" },
+import { DateTime } from "luxon";
+        
+        const dt = DateTime.now();
+
+        const dateStart = dt.plus({ days: -7 }).toFormat("yyyy-MM-dd");
+        const dateEnd = dt.plus({ days: 7 }).toFormat("yyyy-MM-dd");
+
+        const title = [
+        { label: "select", value: "my", attrs: { disabled: true } },,
+                        "Programmer",
+                        "Developer",
+                        "Designer",
 ];
-
-const includeOptions = [
-  { label: "Current Employees Only", value: "current" },
-  { label: "All Employees", value: "all" },
+const categories = [
+        { label: "select", value: "my", attrs: { disabled: true } },,
+                        "Sales Manager",
+                        "Sales Executive",
+                        "Sales Associate",
+                        
 ];
-
-const jobTitleOptions = [
-  { label: "Developer", value: "developer" },
-  { label: "Jr.Developer", value: "jr.developer" },
-  { label: "UI/UX Developer", value: "UI/UX developer" },
-];
-
-const subUnitOptions = [
-  { label: "Toyyibpay Sdn Bhd", value: "toyyibpay" },
-  { label: "Unit Developer RnD", value: "rnd" },
-  { label: "Corrad Software", value: "corrad" },
-  { label: "Product", value: "product" },
-  { label: "fdsfsd", value: "fdsfsd" },
-];
-
-
-function search() {
-  alert("Search triggered");
-}
-
-function resetForm() {
-  alert("Form reset");
-}
-
 </script>
 
 <template>
@@ -95,7 +75,7 @@ function resetForm() {
  
     <rs-card class="p-4 mt-8">
       <div class="flex justify-between items-center mb-4">
-        <h1 class="text-2xl font-bold" style="font-family: Arial;">Employee List </h1>
+        <h1 class="text-2xl font-bold" style="font-family: Arial;">Tax Exemptions </h1>
         <button class="bg-green-600 text-white py-2 px-4 rounded-full" @click="openTitleModal()" style="font-family: Arial;">+ Add</button>
       </div>
       <hr class="mb-4">
@@ -110,7 +90,7 @@ function resetForm() {
             <div class="flex items-center gap-2">
               <input type="checkbox" v-model="selectedTitles" :value="title.title" />
               <div>
-                <h6 class="font-semibold text-gray-700" style="font-family: Arial;">Employee List </h6>
+                <h6 class="font-semibold text-gray-700" style="font-family: Arial;">Tax Exemptions</h6>
                 <p class="text-gray-500 text-lg" style="font-family: Arial;">{{ title.title }}</p>
               </div>
             </div>
@@ -127,65 +107,49 @@ function resetForm() {
       </div>
 
 
-      <rs-modal title="Human Resources SOP" v-model="showTitleModal" ok-title="Save" :ok-callback="saveJobTitle">
-        <div class="grid grid-cols-1 gap-4">
-          <div>
-        <FormKit 
-          type="text" 
-          label="Employee Name" 
-          placeholder="Type for hints..."
-        />
-      <div>
-        <FormKit 
-          type="text" 
-          label="Employee Id" 
-          placeholder="Type for hints..."
-        />
-      </div>
-      </div>
-      <div>
-        <FormKit 
-          type="select" 
-          label="Employment Status" 
-          :options="employmentStatusOptions"
-        />
-      </div>
-      <div>
-        <FormKit 
-          type="select" 
-          label="Include" 
-          :options="includeOptions"
-        />
-      </div>
-      <div>
-        <FormKit 
-          type="text" 
-          label="Supervisor Name" 
-          placeholder="Type for hints..."
-        />
-      </div>
-      <div>
-        <FormKit 
-          type="select" 
-          label="Job Title" 
-          :options="jobTitleOptions" 
-          placeholder="-- Select --"
-        />
-      </div>
-      <div>
-        <FormKit 
-          type="select" 
-          label="Sub Unit" 
-          :options="subUnitOptions" 
-          placeholder="-- Select --"
-        />
-      </div>
-      <div class="flex gap-4 mt-4">
-        <rs-button variant="secondary" @click="resetForm">Reset</rs-button>
-        <rs-button variant="primary" @click="search">Search</rs-button>
-      </div>
-    </div>
-        <FormKit type="textarea" placeholder="Type your messages here ..." label="Description" help="Enter a comment about the document." />
+      <rs-modal title="Tax Exemptions" v-model="showTitleModal" ok-title="Save" :ok-callback="saveJobTitle">
+        <h2 class="text-lg font-bold mb-4">Federal Income Tax</h2>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <FormKit
+            type="select"
+            label="Status"
+            :options="[{ label: 'Select', value: '', attrs: { disabled: true } }, 'Single', 'Married', 'Head of Household']"
+          />
+          <FormKit
+            type="text"
+            label="Exemptions"
+            placeholder="Enter exemptions"
+          />
+        </div>
+
+        <h2 class="text-lg font-bold mb-4">State Income Tax</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <FormKit
+            type="select"
+            label="State"
+            :options="[{ label: 'Select', value: '', attrs: { disabled: true } }, 'California', 'Texas', 'New York']"
+          />
+          <FormKit
+            type="select"
+            label="Status"
+            :options="[{ label: 'Select', value: '', attrs: { disabled: true } }, 'Single', 'Married', 'Head of Household']"
+          />
+          <FormKit
+            type="text"
+            label="Exemptions"
+            placeholder="Enter exemptions"
+          />
+          <FormKit
+            type="select"
+            label="Unemployment State"
+            :options="[{ label: 'Select', value: '', attrs: { disabled: true } }, 'California', 'Texas', 'New York']"
+          />
+          <FormKit
+            type="select"
+            label="Work State"
+            :options="[{ label: 'Select', value: '', attrs: { disabled: true } }, 'California', 'Texas', 'New York']"
+          />
+        </div>
       </rs-modal>
     </rs-card>
   </div>
