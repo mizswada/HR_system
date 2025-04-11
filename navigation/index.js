@@ -319,6 +319,64 @@ export default [
                   }
                 ]
               },
+              {
+                "title": "Advance",
+                "path": "/orangeHR/Advance",
+                "icon": "ph:user-circle-gear",
+                "child": [
+                      {
+                        "title": "Configuration",
+                        "path": "/orangeHR/Advance/configurationlimit",
+                        "icon": "",
+                        "child": []
+                      }
+                    ]
+                  },
+        
+                  {
+                    "title": "My Info",
+                    "path": "/orangeHR/myinfo",
+                    "icon": "ph:user-circle-gear",
+                    "child": [
+                      {
+                        "title": "Job",
+                        "path": "/orangeHR/myinfo/job",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Salary",
+                        "path": "/orangeHR/myinfo/salary",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Tax Exemptions",
+                        "path": "/orangeHR/myinfo/tax",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Report-To",
+                        "path": "/orangeHR/myinfo/reportto",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Qualifications",
+                        "path": "/orangeHR/myinfo/qualifications",
+                        "icon": "",
+                        "child": []
+                      },
+                      {
+                        "title": "Memberships",
+                        "path": "/orangeHR/myinfo/membership",
+                        "icon": "",
+                        "child": []
+                      },
+                      
+                    ]
+                  },
         
             ]
           }
