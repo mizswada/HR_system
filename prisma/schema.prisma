@@ -17,15 +17,8 @@ model audit {
   auditIP          String?   @db.VarChar(255)
   auditURL         String?   @db.VarChar(255)
   auditURLMethod   String?   @db.VarChar(255)
-  auditURLPayload  String?   @db.Text
-  auditCreatedDate DateTime? @default(now()) @db.DateTime(0)
-  auditAction      String?   @db.VarChar(255)
-  auditDetails     String?   @db.Text
-  auditUserID      Int?
-  auditUsername    String?   @db.VarChar(255)
-  user             user?     @relation(fields: [auditUserID], references: [userID])
-
-  @@index([auditUserID], map: "FK_audit_user")
+  auditURLPayload  String?   @db.VarChar(255)
+  auditCreatedDate DateTime? @db.DateTime(0)
 }
 
 model user {
@@ -39,7 +32,6 @@ model user {
   userStatus       String?    @db.VarChar(255)
   userCreatedDate  DateTime?  @db.DateTime(0)
   userModifiedDate DateTime?  @db.DateTime(0)
-  audit            audit[]
   userrole         userrole[]
 }
 
@@ -75,4 +67,99 @@ model userrole {
 
   @@index([userRoleRoleID], map: "FK_userrole_role")
   @@index([userRoleUserID], map: "FK_userrole_user")
+}
+
+model Book {
+  id              Int       @id @default(autoincrement())
+  title           String    @db.VarChar(255)
+  author          String    @db.VarChar(255)
+  isbn            String    @unique @db.VarChar(50)
+  category        String    @db.VarChar(100)
+  publishedYear   Int
+  copies          Int       @default(1)
+  availableCopies Int       @default(1)
+  description     String?   @db.Text
+  coverImage      String?   @db.VarChar(500)
+  status          String    @default("active") @db.VarChar(50)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime
+  Booking         Booking[]
+}
+
+model Booking {
+  id          Int         @id @default(autoincrement())
+  bookId      Int
+  userId      Int
+  borrowDate  DateTime    @default(now())
+  dueDate     DateTime
+  returnDate  DateTime?
+  status      String      @default("borrowed") @db.VarChar(50)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime
+  Book        Book        @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  LibraryUser LibraryUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([bookId])
+  @@index([status])
+  @@index([userId])
+}
+
+model LibraryUser {
+  id        Int       @id @default(autoincrement())
+  username  String    @unique @db.VarChar(100)
+  email     String    @unique @db.VarChar(255)
+  fullName  String    @db.VarChar(255)
+  phone     String?   @db.VarChar(50)
+  role      String    @default("member") @db.VarChar(50)
+  status    String    @default("active") @db.VarChar(50)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  Booking   Booking[]
+}
+
+model site_settings {
+  settingID            Int       @id @default(autoincrement())
+  siteName             String?   @db.VarChar(255)
+  siteNameFontSize     Int?      @default(18)
+  siteDescription      String?   @db.Text
+  siteLogo             String?   @db.VarChar(500)
+  siteLoadingLogo      String?   @db.VarChar(500)
+  siteFavicon          String?   @db.VarChar(500)
+  showSiteNameInHeader Boolean?  @default(true)
+  primaryColor         String?   @db.VarChar(50)
+  secondaryColor       String?   @db.VarChar(50)
+  successColor         String?   @db.VarChar(50)
+  infoColor            String?   @db.VarChar(50)
+  warningColor         String?   @db.VarChar(50)
+  dangerColor          String?   @db.VarChar(50)
+  customCSS            String?   @db.Text
+  themeMode            String?   @db.VarChar(50)
+  customThemeFile      String?   @db.VarChar(500)
+  currentFont          String?   @db.VarChar(255)
+  fontSource           String?   @db.VarChar(500)
+  seoTitle             String?   @db.VarChar(255)
+  seoDescription       String?   @db.Text
+  seoKeywords          String?   @db.Text
+  seoAuthor            String?   @db.VarChar(255)
+  seoOgImage           String?   @db.VarChar(500)
+  seoTwitterCard       String?   @default("summary_large_image") @db.VarChar(50)
+  seoCanonicalUrl      String?   @db.VarChar(500)
+  seoRobots            String?   @default("index, follow") @db.VarChar(100)
+  seoGoogleAnalytics   String?   @db.VarChar(255)
+  seoGoogleTagManager  String?   @db.VarChar(255)
+  seoFacebookPixel     String?   @db.VarChar(255)
+  settingCreatedDate   DateTime? @db.DateTime(0)
+  settingModifiedDate  DateTime? @db.DateTime(0)
+  siteLoginLogo        String?   @db.VarChar(500)
+}
+
+model ticket {
+  ticketId    Int      @id @default(autoincrement())
+  title       String
+  description String
+  dueDate     DateTime
+  priority    String   @default("medium")
+  status      String   @default("pending")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
 }

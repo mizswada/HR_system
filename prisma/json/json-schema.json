@@ -37,34 +37,6 @@
             "null"
           ],
           "format": "date-time"
-        },
-        "auditAction": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "auditDetails": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "auditUsername": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "user": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/user"
-            },
-            {
-              "type": "null"
-            }
-          ]
         }
       }
     },
@@ -129,12 +101,6 @@
             "null"
           ],
           "format": "date-time"
-        },
-        "audit": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/audit"
-          }
         },
         "userrole": {
           "type": "array",
@@ -265,6 +231,393 @@
           "$ref": "#/definitions/user"
         }
       }
+    },
+    "Book": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "isbn": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "publishedYear": {
+          "type": "integer"
+        },
+        "copies": {
+          "type": "integer",
+          "default": 1
+        },
+        "availableCopies": {
+          "type": "integer",
+          "default": 1
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "coverImage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "default": "active"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Booking": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Booking"
+          }
+        }
+      }
+    },
+    "Booking": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "borrowDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "returnDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "default": "borrowed"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Book": {
+          "$ref": "#/definitions/Book"
+        },
+        "LibraryUser": {
+          "$ref": "#/definitions/LibraryUser"
+        }
+      }
+    },
+    "LibraryUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "role": {
+          "type": "string",
+          "default": "member"
+        },
+        "status": {
+          "type": "string",
+          "default": "active"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Booking": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Booking"
+          }
+        }
+      }
+    },
+    "site_settings": {
+      "type": "object",
+      "properties": {
+        "settingID": {
+          "type": "integer"
+        },
+        "siteName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "siteNameFontSize": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "default": 18
+        },
+        "siteDescription": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "siteLogo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "siteLoadingLogo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "siteFavicon": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "showSiteNameInHeader": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "default": true
+        },
+        "primaryColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "secondaryColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "successColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "infoColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "warningColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dangerColor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customCSS": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "themeMode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customThemeFile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "currentFont": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fontSource": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seoTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seoDescription": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seoKeywords": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seoAuthor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seoOgImage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seoTwitterCard": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": "summary_large_image"
+        },
+        "seoCanonicalUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seoRobots": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": "index, follow"
+        },
+        "seoGoogleAnalytics": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seoGoogleTagManager": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seoFacebookPixel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "settingCreatedDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "settingModifiedDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "siteLoginLogo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "ticket": {
+      "type": "object",
+      "properties": {
+        "ticketId": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "priority": {
+          "type": "string",
+          "default": "medium"
+        },
+        "status": {
+          "type": "string",
+          "default": "pending"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
     }
   },
   "type": "object",
@@ -283,6 +636,21 @@
     },
     "userrole": {
       "$ref": "#/definitions/userrole"
+    },
+    "book": {
+      "$ref": "#/definitions/Book"
+    },
+    "booking": {
+      "$ref": "#/definitions/Booking"
+    },
+    "libraryUser": {
+      "$ref": "#/definitions/LibraryUser"
+    },
+    "site_settings": {
+      "$ref": "#/definitions/site_settings"
+    },
+    "ticket": {
+      "$ref": "#/definitions/ticket"
     }
   }
 }
